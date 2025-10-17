@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(textutil:*)",
+      "Bash(npx create-next-app:*)",
+      "Bash(npm init:*)",
+      "Bash(npm install:*)",
+      "Bash(npm run dev:*)",
+      "Bash(npm uninstall:*)",
+      "Bash(chmod:*)",
+      "Bash(rsync:*)",
+      "Bash(. Production/d2d-project/)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
