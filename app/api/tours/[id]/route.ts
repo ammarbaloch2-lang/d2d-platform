@@ -3,9 +3,10 @@ import { getTourById, updateTour, deleteTour } from '@/lib/tours'
 
 export async function GET(
   request: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
-  const tour = getTourById(params.id)
+  const { id } = await params
+  const tour = getTourById(id)
   if (!tour) {
     return NextResponse.json({ error: 'Tour not found' }, { status: 404 })
   }
@@ -14,11 +15,12 @@ export async function GET(
 
 export async function PUT(
   request: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id } = await params
     const body = await request.json()
-    const updatedTour = updateTour(params.id, body)
+    const updatedTour = updateTour(id, body)
     if (!updatedTour) {
       return NextResponse.json({ error: 'Tour not found' }, { status: 404 })
     }
@@ -30,9 +32,10 @@ export async function PUT(
 
 export async function DELETE(
   request: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
-  const success = deleteTour(params.id)
+  const { id } = await params
+  const success = deleteTour(id)
   if (!success) {
     return NextResponse.json({ error: 'Tour not found' }, { status: 404 })
   }

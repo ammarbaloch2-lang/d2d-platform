@@ -4,10 +4,11 @@ import { membersDb } from '@/lib/membersDb'
 // GET /api/members/[id] - Get a single member
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const member = membersDb.getById(params.id)
+    const { id } = await params
+    const member = membersDb.getById(id)
 
     if (!member) {
       return NextResponse.json(
@@ -28,12 +29,13 @@ export async function GET(
 // PUT /api/members/[id] - Update a member
 export async function PUT(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id } = await params
     const body = await request.json()
 
-    const updatedMember = membersDb.update(params.id, body)
+    const updatedMember = membersDb.update(id, body)
 
     if (!updatedMember) {
       return NextResponse.json(
@@ -54,10 +56,11 @@ export async function PUT(
 // DELETE /api/members/[id] - Delete a member
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const success = membersDb.delete(params.id)
+    const { id } = await params
+    const success = membersDb.delete(id)
 
     if (!success) {
       return NextResponse.json(

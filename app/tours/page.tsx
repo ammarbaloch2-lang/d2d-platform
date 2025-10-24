@@ -4,11 +4,11 @@ import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import TourCard from '@/components/TourCard'
 import Image from 'next/image'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
 import { Tour } from '@/types/tour'
 
-export default function ToursPage() {
+function ToursContent() {
   const searchParams = useSearchParams()
   const [allTours, setAllTours] = useState<Tour[]>([])
   const [filteredTours, setFilteredTours] = useState<Tour[]>([])
@@ -184,5 +184,14 @@ export default function ToursPage() {
 
       <Footer />
     </div>
+  )
+}
+
+
+export default function ToursPage() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <ToursContent />
+    </Suspense>
   )
 }
