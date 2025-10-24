@@ -154,25 +154,25 @@ export default function Footer() {
             <h3 className="text-lg font-bold mb-4 text-primary">Support</h3>
             <ul className="space-y-2 text-sm">
               <li>
-                <Link href="/contact" className="text-gray-300 hover:text-primary transition-colors flex items-center group">
+                <Link href="/faq" className="text-gray-300 hover:text-primary transition-colors flex items-center group">
                   <span className="mr-2 group-hover:mr-3 transition-all">→</span>
                   FAQ
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="text-gray-300 hover:text-primary transition-colors flex items-center group">
+                <Link href="/booking-policy" className="text-gray-300 hover:text-primary transition-colors flex items-center group">
                   <span className="mr-2 group-hover:mr-3 transition-all">→</span>
                   Booking Policy
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="text-gray-300 hover:text-primary transition-colors flex items-center group">
+                <Link href="/privacy-policy" className="text-gray-300 hover:text-primary transition-colors flex items-center group">
                   <span className="mr-2 group-hover:mr-3 transition-all">→</span>
                   Privacy Policy
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="text-gray-300 hover:text-primary transition-colors flex items-center group">
+                <Link href="/terms-of-service" className="text-gray-300 hover:text-primary transition-colors flex items-center group">
                   <span className="mr-2 group-hover:mr-3 transition-all">→</span>
                   Terms of Service
                 </Link>
@@ -243,16 +243,16 @@ export default function Footer() {
           <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-300">
             <p>&copy; {new Date().getFullYear()} Saudi Tourism Group - Dare2Discover. All rights reserved.</p>
             <div className="flex items-center gap-4">
-              <Link href="/contact" className="hover:text-primary transition-colors">
+              <Link href="/privacy-policy" className="hover:text-primary transition-colors">
                 Privacy Policy
               </Link>
               <span className="text-gray-500">•</span>
-              <Link href="/contact" className="hover:text-primary transition-colors">
+              <Link href="/terms-of-service" className="hover:text-primary transition-colors">
                 Terms of Service
               </Link>
               <span className="text-gray-500">•</span>
               <Link href="/contact" className="hover:text-primary transition-colors">
-                Sitemap
+                Contact
               </Link>
             </div>
           </div>
