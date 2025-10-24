@@ -104,6 +104,8 @@ export default function TourDetailPage() {
   const [tour, setTour] = useState<Tour | null>(null)
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
   const [loading, setLoading] = useState(true)
+  const [lightboxOpen, setLightboxOpen] = useState(false)
+  const [lightboxIndex, setLightboxIndex] = useState(0)
 
   useEffect(() => {
     // Fetch tour from API
@@ -157,6 +159,23 @@ export default function TourDetailPage() {
   }
 
   const galleryImages = tour.images && tour.images.length > 0 ? tour.images : [tour.image]
+
+  const openLightbox = (index: number) => {
+    setLightboxIndex(index)
+    setLightboxOpen(true)
+  }
+
+  const closeLightbox = () => {
+    setLightboxOpen(false)
+  }
+
+  const nextImage = () => {
+    setLightboxIndex((prev) => (prev + 1) % galleryImages.length)
+  }
+
+  const previousImage = () => {
+    setLightboxIndex((prev) => (prev - 1 + galleryImages.length) % galleryImages.length)
+  }
 
   const handleBookNow = () => {
     if (!selectedDate) {
@@ -212,7 +231,7 @@ export default function TourDetailPage() {
       {galleryImages.length > 0 && (
         <div className="container mx-auto px-4 py-8">
           <div className="bg-white rounded-lg shadow-md overflow-hidden">
-            <div className="relative h-96 group">
+            <div className="relative h-96 group cursor-pointer" onClick={() => openLightbox(currentImageIndex)}>
               <Image
                 src={galleryImages[currentImageIndex]}
                 alt={tour.title}
@@ -220,6 +239,15 @@ export default function TourDetailPage() {
                 className="object-cover"
                 sizes="(max-width: 1280px) 100vw, 1280px"
               />
+
+              {/* Click to Expand Indicator */}
+              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all flex items-center justify-center">
+                <div className="opacity-0 group-hover:opacity-100 transition-opacity bg-white/90 rounded-full p-4">
+                  <svg className="w-8 h-8 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7" />
+                  </svg>
+                </div>
+              </div>
 
               {/* Image Navigation */}
               {galleryImages.length > 1 && (
@@ -247,10 +275,18 @@ export default function TourDetailPage() {
                     {galleryImages.map((image, index) => (
                       <button
                         key={index}
-                        onClick={() => setCurrentImageIndex(index)}
+                        onClick={(e) => {
+                          e.stopPropagation()
+                          setCurrentImageIndex(index)
+                        }}
+                        onDoubleClick={(e) => {
+                          e.stopPropagation()
+                          openLightbox(index)
+                        }}
                         className={`relative w-16 h-16 rounded overflow-hidden border-2 transition-all ${
                           index === currentImageIndex ? 'border-white scale-110' : 'border-transparent opacity-60 hover:opacity-100'
                         }`}
+                        title="Double-click to view full size"
                       >
                         <Image
                           src={image}
@@ -463,6 +499,103 @@ export default function TourDetailPage() {
               </button>
             </div>
           </div>
+        </div>
+      )}
+
+      {/* Image Lightbox Modal */}
+      {lightboxOpen && (
+        <div
+          className="fixed inset-0 bg-black bg-opacity-95 flex items-center justify-center z-50"
+          onClick={closeLightbox}
+        >
+          {/* Close Button */}
+          <button
+            onClick={closeLightbox}
+            className="absolute top-4 right-4 text-white hover:text-gray-300 transition-colors z-10"
+            aria-label="Close lightbox"
+          >
+            <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+
+          {/* Image Counter */}
+          <div className="absolute top-4 left-1/2 -translate-x-1/2 text-white text-lg font-semibold bg-black/50 px-4 py-2 rounded-full">
+            {lightboxIndex + 1} / {galleryImages.length}
+          </div>
+
+          {/* Previous Button */}
+          {galleryImages.length > 1 && (
+            <button
+              onClick={(e) => {
+                e.stopPropagation()
+                previousImage()
+              }}
+              className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/30 text-white rounded-full p-4 transition-all"
+              aria-label="Previous image"
+            >
+              <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+          )}
+
+          {/* Main Image */}
+          <div
+            className="relative max-w-7xl max-h-[90vh] w-full h-full mx-4"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <Image
+              src={galleryImages[lightboxIndex]}
+              alt={`${tour.title} - Image ${lightboxIndex + 1}`}
+              fill
+              className="object-contain"
+              sizes="100vw"
+              priority
+            />
+          </div>
+
+          {/* Next Button */}
+          {galleryImages.length > 1 && (
+            <button
+              onClick={(e) => {
+                e.stopPropagation()
+                nextImage()
+              }}
+              className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/30 text-white rounded-full p-4 transition-all"
+              aria-label="Next image"
+            >
+              <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+          )}
+
+          {/* Thumbnail Strip */}
+          {galleryImages.length > 1 && (
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 bg-black/50 p-3 rounded-lg max-w-full overflow-x-auto">
+              {galleryImages.map((image, index) => (
+                <button
+                  key={index}
+                  onClick={(e) => {
+                    e.stopPropagation()
+                    setLightboxIndex(index)
+                  }}
+                  className={`relative w-20 h-20 flex-shrink-0 rounded overflow-hidden border-2 transition-all ${
+                    index === lightboxIndex ? 'border-white scale-110' : 'border-transparent opacity-60 hover:opacity-100'
+                  }`}
+                >
+                  <Image
+                    src={image}
+                    alt={`Thumbnail ${index + 1}`}
+                    fill
+                    className="object-cover"
+                    sizes="80px"
+                  />
+                </button>
+              ))}
+            </div>
+          )}
         </div>
       )}
 
