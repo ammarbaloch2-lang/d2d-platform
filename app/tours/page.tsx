@@ -20,14 +20,20 @@ function ToursContent() {
 
   // Fetch tours from API
   useEffect(() => {
+    console.log('🔍 Fetching tours from /api/tours...')
     fetch('/api/tours')
-      .then(res => res.json())
+      .then(res => {
+        console.log('✅ Response received:', res.status, res.ok)
+        return res.json()
+      })
       .then(data => {
+        console.log('✅ Tours data received:', data.length, 'tours')
+        console.log('Tours:', data)
         setAllTours(data)
         setLoading(false)
       })
       .catch(err => {
-        console.error('Failed to fetch tours:', err)
+        console.error('❌ Failed to fetch tours:', err)
         setLoading(false)
       })
   }, [])
@@ -41,20 +47,26 @@ function ToursContent() {
   }, [searchParams])
 
   useEffect(() => {
+    console.log('🔧 Filtering tours. Total:', allTours.length)
+    console.log('Filters - Category:', selectedCategory, 'Price:', priceRange, 'Sort:', sortBy, 'Search:', searchQuery)
     let filtered = [...allTours]
 
     // Filter by category
     if (selectedCategory !== 'all') {
       filtered = filtered.filter(tour => tour.category === selectedCategory)
+      console.log('After category filter:', filtered.length)
     }
 
     // Filter by price range
     if (priceRange === 'low') {
       filtered = filtered.filter(tour => tour.price < 250)
+      console.log('After price filter (low):', filtered.length)
     } else if (priceRange === 'medium') {
       filtered = filtered.filter(tour => tour.price >= 250 && tour.price < 400)
+      console.log('After price filter (medium):', filtered.length)
     } else if (priceRange === 'high') {
       filtered = filtered.filter(tour => tour.price >= 400)
+      console.log('After price filter (high):', filtered.length)
     }
 
     // Filter by search query
@@ -64,6 +76,7 @@ function ToursContent() {
         tour.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
         tour.location.toLowerCase().includes(searchQuery.toLowerCase())
       )
+      console.log('After search filter:', filtered.length)
     }
 
     // Sort
@@ -75,6 +88,7 @@ function ToursContent() {
       filtered.sort((a, b) => b.rating - a.rating)
     }
 
+    console.log('✅ Final filtered tours:', filtered.length)
     setFilteredTours(filtered)
   }, [allTours, selectedCategory, priceRange, sortBy, searchQuery])
 

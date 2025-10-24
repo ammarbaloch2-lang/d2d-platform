@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'standalone',
+  // Only use standalone output for production builds (Vercel handles this automatically)
+  ...(process.env.NODE_ENV === 'production' && { output: 'standalone' }),
   images: {
     unoptimized: true, // IONOS may not support image optimization
     remotePatterns: [

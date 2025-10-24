@@ -1,13 +1,13 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 import { Tour } from '@/types/tour'
 import { Member } from '@/types/member'
 import MemberFormModal from '@/components/MemberFormModal'
 
-export default function AdminDashboard() {
+function AdminDashboardContent() {
   const searchParams = useSearchParams()
   const tabParam = searchParams.get('tab')
 
@@ -544,5 +544,13 @@ export default function AdminDashboard() {
         member={selectedMember}
       />
     </div>
+  )
+}
+
+export default function AdminDashboard() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-gray-100 flex items-center justify-center"><p>Loading...</p></div>}>
+      <AdminDashboardContent />
+    </Suspense>
   )
 }
