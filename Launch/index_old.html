@@ -1,0 +1,1112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D2D - Dare to Discover Saudi Arabia | Premium Tours & Desert Adventures</title>
+    <meta name="description" content="Dare to Discover Saudi Arabia with D2D. Experience premium desert adventures, heritage tours, camel treks, hot air balloon rides, and luxury camping. Expert local guides showcase the Kingdom's hidden treasures and iconic landmarks. Book your unforgettable Saudi Arabian adventure today.">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;600;700;800&family=Russo+One&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #1E5128 0%, #2E7D3B 50%, #1E5128 100%);
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+
+        /* Animated background pattern */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image:
+                radial-gradient(circle at 20% 50%, rgba(245, 165, 36, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(245, 165, 36, 0.15) 0%, transparent 50%);
+            animation: backgroundPulse 15s ease-in-out infinite;
+        }
+
+        @keyframes backgroundPulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 3rem 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .logo-section {
+            margin-bottom: 3rem;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .logo-container {
+            margin: 0 auto 2rem;
+            position: relative;
+            width: fit-content;
+        }
+
+        .logo-image {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            box-shadow:
+                0 20px 60px rgba(245, 165, 36, 0.4),
+                0 0 0 8px rgba(255, 255, 255, 0.1),
+                0 0 0 16px rgba(245, 165, 36, 0.1);
+            animation: float 3s ease-in-out infinite;
+            display: block;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .brand-text {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0;
+            margin-bottom: 1rem;
+        }
+
+        .brand-letter {
+            font-family: 'Russo One', sans-serif;
+            font-size: 6rem;
+            color: #F5A524;
+            font-weight: 900;
+            transform: skewX(-6deg);
+            animation: fadeInUp 1s ease-out 0.2s backwards;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .brand-middle {
+            position: relative;
+            width: 60px;
+            height: 90px;
+            margin: 0 8px;
+        }
+
+        .road-number {
+            font-family: 'Russo One', sans-serif;
+            font-size: 5rem;
+            background: linear-gradient(180deg, #2d2d2d 0%, #1a1a1a 50%, #000000 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+            z-index: 1;
+        }
+
+        .road-lines {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            pointer-events: none;
+        }
+
+        .road-line {
+            width: 3px;
+            height: 10px;
+            background: white;
+            border-radius: 2px;
+        }
+
+        .tagline {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 800;
+            color: #F5A524;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            margin-top: -0.5rem;
+            animation: fadeInUp 1s ease-out 0.4s backwards;
+        }
+
+        .welcome-text {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: white;
+            margin: 2rem 0 1rem;
+            letter-spacing: -0.02em;
+            animation: fadeInUp 1s ease-out 0.6s backwards;
+        }
+
+        .description {
+            font-size: 1.25rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 3rem;
+            line-height: 1.8;
+            font-weight: 400;
+            animation: fadeInUp 1s ease-out 0.8s backwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .loader-container {
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease-out 1s backwards;
+            position: relative;
+        }
+
+        .scene {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .scene.active {
+            opacity: 1;
+        }
+
+        .scenes-container {
+            position: relative;
+            width: 200px;
+            height: 120px;
+            margin: 0 auto 1rem;
+        }
+
+        /* Desert dunes background */
+        .desert-scene {
+            position: relative;
+            width: 200px;
+            height: 120px;
+            margin: 0 auto 1rem;
+        }
+
+        .dune {
+            position: absolute;
+            bottom: 0;
+            background: linear-gradient(135deg, #F5A524 0%, #D68F1F 100%);
+            border-radius: 50% 50% 0 0;
+            opacity: 0.6;
+        }
+
+        .dune1 {
+            left: 0;
+            width: 100px;
+            height: 40px;
+            animation: duneWave 4s ease-in-out infinite;
+        }
+
+        .dune2 {
+            left: 60px;
+            width: 120px;
+            height: 50px;
+            animation: duneWave 4s ease-in-out 0.5s infinite;
+        }
+
+        .dune3 {
+            right: 0;
+            width: 90px;
+            height: 35px;
+            animation: duneWave 4s ease-in-out 1s infinite;
+        }
+
+        @keyframes duneWave {
+            0%, 100% { transform: translateY(0) scaleY(1); }
+            50% { transform: translateY(-5px) scaleY(1.1); }
+        }
+
+        /* 4x4 Vehicle */
+        .vehicle {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: vehicleDrive 3s ease-in-out infinite;
+        }
+
+        .vehicle-body {
+            width: 60px;
+            height: 30px;
+            background: linear-gradient(180deg, #2E7D3B 0%, #1E5128 100%);
+            border-radius: 4px 4px 8px 8px;
+            position: relative;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .vehicle-top {
+            width: 35px;
+            height: 15px;
+            background: linear-gradient(180deg, #2E7D3B 0%, #1E5128 100%);
+            border-radius: 3px 3px 0 0;
+            position: absolute;
+            top: -12px;
+            left: 8px;
+        }
+
+        .vehicle-window {
+            width: 12px;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.3);
+            position: absolute;
+            top: 2px;
+            left: 3px;
+            border-radius: 1px;
+        }
+
+        .vehicle-window:last-child {
+            left: 18px;
+        }
+
+        .wheel {
+            width: 14px;
+            height: 14px;
+            background: #2d2d2d;
+            border-radius: 50%;
+            position: absolute;
+            bottom: -7px;
+            border: 3px solid #1a1a1a;
+            animation: wheelSpin 0.5s linear infinite;
+        }
+
+        .wheel-left {
+            left: 5px;
+        }
+
+        .wheel-right {
+            right: 5px;
+        }
+
+        @keyframes wheelSpin {
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes vehicleDrive {
+            0%, 100% {
+                transform: translateX(-50%) translateY(0) rotate(0deg);
+            }
+            25% {
+                transform: translateX(-40%) translateY(-8px) rotate(-2deg);
+            }
+            50% {
+                transform: translateX(-50%) translateY(0) rotate(0deg);
+            }
+            75% {
+                transform: translateX(-60%) translateY(-5px) rotate(2deg);
+            }
+        }
+
+        /* Dust particles */
+        .dust {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(245, 165, 36, 0.6);
+            border-radius: 50%;
+            animation: dustFly 1.5s ease-out infinite;
+        }
+
+        .dust1 {
+            bottom: 35px;
+            left: 40%;
+            animation-delay: 0s;
+        }
+
+        .dust2 {
+            bottom: 38px;
+            left: 45%;
+            animation-delay: 0.3s;
+        }
+
+        .dust3 {
+            bottom: 36px;
+            left: 50%;
+            animation-delay: 0.6s;
+        }
+
+        @keyframes dustFly {
+            0% {
+                opacity: 0;
+                transform: translate(0, 0) scale(1);
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+                transform: translate(-20px, -15px) scale(0.3);
+            }
+        }
+
+        /* Sun */
+        .sun {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: radial-gradient(circle, #F5A524 0%, #D68F1F 100%);
+            border-radius: 50%;
+            box-shadow: 0 0 30px rgba(245, 165, 36, 0.6);
+            animation: sunPulse 3s ease-in-out infinite;
+        }
+
+        @keyframes sunPulse {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 0 30px rgba(245, 165, 36, 0.6);
+            }
+            50% {
+                transform: scale(1.1);
+                box-shadow: 0 0 50px rgba(245, 165, 36, 0.8);
+            }
+        }
+
+        /* SCENE 2: Camel Caravan */
+        .camel {
+            position: absolute;
+            bottom: 40px;
+            animation: camelWalk 4s ease-in-out infinite;
+        }
+
+        .camel1 {
+            left: 30%;
+            animation-delay: 0s;
+        }
+
+        .camel2 {
+            left: 50%;
+            animation-delay: 0.3s;
+        }
+
+        .camel3 {
+            left: 70%;
+            animation-delay: 0.6s;
+        }
+
+        .camel-body {
+            width: 35px;
+            height: 20px;
+            background: linear-gradient(180deg, #D68F1F 0%, #B8751A 100%);
+            border-radius: 15px 15px 5px 5px;
+            position: relative;
+        }
+
+        .camel-hump {
+            width: 18px;
+            height: 18px;
+            background: linear-gradient(180deg, #D68F1F 0%, #B8751A 100%);
+            border-radius: 50% 50% 40% 40%;
+            position: absolute;
+            top: -12px;
+            left: 8px;
+        }
+
+        .camel-neck {
+            width: 4px;
+            height: 15px;
+            background: linear-gradient(180deg, #D68F1F 0%, #B8751A 100%);
+            position: absolute;
+            top: -8px;
+            left: 0;
+            transform: rotate(-20deg);
+            border-radius: 2px;
+        }
+
+        .camel-head {
+            width: 8px;
+            height: 8px;
+            background: #D68F1F;
+            border-radius: 3px;
+            position: absolute;
+            top: -4px;
+            left: -5px;
+        }
+
+        .camel-legs {
+            position: absolute;
+            bottom: -12px;
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            padding: 0 5px;
+        }
+
+        .camel-leg {
+            width: 3px;
+            height: 12px;
+            background: #B8751A;
+            border-radius: 1px;
+        }
+
+        @keyframes camelWalk {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            25% {
+                transform: translateY(-4px);
+            }
+            50% {
+                transform: translateY(0);
+            }
+            75% {
+                transform: translateY(-2px);
+            }
+        }
+
+        /* SCENE 3: Hot Air Balloon over Heritage */
+        .balloon {
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: balloonFloat 5s ease-in-out infinite;
+        }
+
+        .balloon-envelope {
+            width: 50px;
+            height: 60px;
+            background: linear-gradient(135deg, #F5A524 0%, #D68F1F 50%, #1E5128 100%);
+            border-radius: 50% 50% 45% 45%;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .balloon-pattern {
+            position: absolute;
+            width: 100%;
+            height: 50%;
+            top: 0;
+            border-radius: 50% 50% 0 0;
+            background: linear-gradient(to bottom,
+                transparent 0%,
+                transparent 45%,
+                rgba(255, 255, 255, 0.1) 50%,
+                transparent 55%,
+                transparent 100%
+            );
+        }
+
+        .balloon-basket {
+            width: 20px;
+            height: 12px;
+            background: #8B4513;
+            border: 2px solid #654321;
+            position: absolute;
+            top: 65px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        .balloon-rope {
+            width: 1px;
+            height: 8px;
+            background: #654321;
+            position: absolute;
+            top: 57px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        @keyframes balloonFloat {
+            0%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            50% {
+                transform: translateX(-50%) translateY(-15px);
+            }
+        }
+
+        .heritage-building {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 50px;
+        }
+
+        .building-base {
+            width: 100%;
+            height: 35px;
+            background: linear-gradient(180deg, #D2B48C 0%, #C19A6B 100%);
+            border-radius: 2px;
+            position: relative;
+        }
+
+        .building-tower {
+            width: 20px;
+            height: 25px;
+            background: linear-gradient(180deg, #D2B48C 0%, #C19A6B 100%);
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px 2px 0 0;
+        }
+
+        .building-dome {
+            width: 24px;
+            height: 12px;
+            background: linear-gradient(180deg, #F5A524 0%, #D68F1F 100%);
+            border-radius: 50% 50% 0 0;
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .building-window {
+            width: 8px;
+            height: 10px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 1px 1px 0 0;
+            position: absolute;
+            bottom: 5px;
+        }
+
+        .window-1 { left: 10px; }
+        .window-2 { left: 25px; }
+        .window-3 { left: 45px; }
+        .window-4 { right: 10px; }
+
+        /* SCENE 4: Night Camping */
+        .tent {
+            position: absolute;
+            bottom: 35px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .tent-body {
+            width: 0;
+            height: 0;
+            border-left: 35px solid transparent;
+            border-right: 35px solid transparent;
+            border-bottom: 40px solid #1E5128;
+            position: relative;
+        }
+
+        .tent-door {
+            width: 12px;
+            height: 20px;
+            background: rgba(245, 165, 36, 0.8);
+            position: absolute;
+            bottom: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px 2px 0 0;
+        }
+
+        .campfire {
+            position: absolute;
+            bottom: 30px;
+            left: 30%;
+            transform: translateX(-50%);
+        }
+
+        .fire-flame {
+            width: 8px;
+            height: 12px;
+            background: linear-gradient(to top, #F5A524 0%, #ff6b00 100%);
+            border-radius: 50% 50% 0 0;
+            position: relative;
+            animation: flicker 0.5s ease-in-out infinite alternate;
+        }
+
+        .fire-flame::before {
+            content: '';
+            position: absolute;
+            width: 6px;
+            height: 8px;
+            background: linear-gradient(to top, #ff6b00 0%, #ffff00 100%);
+            border-radius: 50% 50% 0 0;
+            left: 1px;
+            top: 2px;
+        }
+
+        @keyframes flicker {
+            0% { transform: scaleY(1); }
+            100% { transform: scaleY(1.2); }
+        }
+
+        .fire-logs {
+            width: 12px;
+            height: 3px;
+            background: #4a2511;
+            position: absolute;
+            bottom: -3px;
+            left: -2px;
+            border-radius: 2px;
+        }
+
+        .stars {
+            position: absolute;
+            top: 10px;
+        }
+
+        .star {
+            width: 3px;
+            height: 3px;
+            background: white;
+            border-radius: 50%;
+            position: absolute;
+            animation: starTwinkle 2s ease-in-out infinite;
+            box-shadow: 0 0 4px rgba(255, 255, 255, 0.8);
+        }
+
+        .star-1 { top: 5px; left: 30px; animation-delay: 0s; }
+        .star-2 { top: 15px; left: 60px; animation-delay: 0.5s; }
+        .star-3 { top: 8px; left: 100px; animation-delay: 1s; }
+        .star-4 { top: 20px; left: 140px; animation-delay: 1.5s; }
+        .star-5 { top: 12px; left: 170px; animation-delay: 0.7s; }
+
+        @keyframes starTwinkle {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        .moon {
+            position: absolute;
+            top: 15px;
+            right: 30px;
+            width: 30px;
+            height: 30px;
+            background: #F5F5DC;
+            border-radius: 50%;
+            box-shadow: 0 0 20px rgba(245, 245, 220, 0.5);
+        }
+
+        .moon-crater {
+            width: 6px;
+            height: 6px;
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 50%;
+            position: absolute;
+        }
+
+        .crater-1 { top: 8px; left: 10px; width: 5px; height: 5px; }
+        .crater-2 { top: 15px; left: 18px; width: 4px; height: 4px; }
+        .crater-3 { top: 18px; left: 8px; width: 3px; height: 3px; }
+
+        .status-text {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-top: 1.5rem;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+            animation: fadeInUp 1s ease-out 1.2s backwards;
+        }
+
+        .feature {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 2rem;
+            border: 2px solid rgba(245, 165, 36, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .feature:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(245, 165, 36, 0.3);
+            border-color: rgba(245, 165, 36, 0.5);
+        }
+
+        .feature-icon {
+            width: 56px;
+            height: 56px;
+            margin: 0 auto 1.5rem;
+            color: #F5A524;
+        }
+
+        .feature-title {
+            color: white;
+            font-weight: 700;
+            font-size: 1.125rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .feature-description {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            font-weight: 400;
+        }
+
+        .footer-text {
+            margin-top: 4rem;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.875rem;
+            animation: fadeInUp 1s ease-out 1.4s backwards;
+        }
+
+        @media (max-width: 768px) {
+            .brand-letter {
+                font-size: 4rem;
+            }
+
+            .brand-middle {
+                width: 40px;
+                height: 60px;
+            }
+
+            .road-number {
+                font-size: 3.5rem;
+            }
+
+            .road-line {
+                width: 2px;
+                height: 7px;
+                gap: 4px;
+            }
+
+            .welcome-text {
+                font-size: 2rem;
+            }
+
+            .description {
+                font-size: 1rem;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo-image {
+                width: 100px;
+                height: 100px;
+            }
+
+            .brand-letter {
+                font-size: 3rem;
+            }
+
+            .brand-middle {
+                width: 30px;
+                height: 45px;
+                margin: 0 4px;
+            }
+
+            .road-number {
+                font-size: 2.5rem;
+            }
+
+            .welcome-text {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo-section">
+            <div class="logo-container">
+                <img src="logo.png" alt="D2D Logo" class="logo-image">
+            </div>
+
+            <div class="brand-text">
+                <span class="brand-letter">D</span>
+                <div class="brand-middle">
+                    <span class="road-number">2</span>
+                    <div class="road-lines">
+                        <div class="road-line"></div>
+                        <div class="road-line"></div>
+                        <div class="road-line"></div>
+                    </div>
+                </div>
+                <span class="brand-letter">D</span>
+            </div>
+
+            <div class="tagline">Welcome to Saudi Arabia</div>
+        </div>
+
+        <h1 class="welcome-text">Dare to Discover Saudi Arabia - Premium Tours & Desert Adventures</h1>
+
+        <p class="description">
+            Get ready to embark on extraordinary journeys through the heart of Saudi Arabia.
+            From majestic deserts to ancient heritage sites, discover the kingdom like never before.
+        </p>
+
+        <div class="loader-container">
+            <div class="scenes-container">
+                <!-- SCENE 1: Desert Off-Road -->
+                <div class="scene active" id="scene1">
+                    <div class="desert-scene">
+                        <!-- Sun -->
+                        <div class="sun"></div>
+
+                        <!-- Desert dunes -->
+                        <div class="dune dune1"></div>
+                        <div class="dune dune2"></div>
+                        <div class="dune dune3"></div>
+
+                        <!-- 4x4 Vehicle -->
+                        <div class="vehicle">
+                            <div class="vehicle-body">
+                                <div class="vehicle-top">
+                                    <div class="vehicle-window"></div>
+                                    <div class="vehicle-window"></div>
+                                </div>
+                                <div class="wheel wheel-left"></div>
+                                <div class="wheel wheel-right"></div>
+                            </div>
+                        </div>
+
+                        <!-- Dust particles -->
+                        <div class="dust dust1"></div>
+                        <div class="dust dust2"></div>
+                        <div class="dust dust3"></div>
+                    </div>
+                </div>
+
+                <!-- SCENE 2: Camel Caravan -->
+                <div class="scene" id="scene2">
+                    <div class="desert-scene">
+                        <!-- Sun -->
+                        <div class="sun"></div>
+
+                        <!-- Desert dunes -->
+                        <div class="dune dune1"></div>
+                        <div class="dune dune2"></div>
+                        <div class="dune dune3"></div>
+
+                        <!-- Camels -->
+                        <div class="camel camel1">
+                            <div class="camel-body">
+                                <div class="camel-hump"></div>
+                                <div class="camel-neck">
+                                    <div class="camel-head"></div>
+                                </div>
+                                <div class="camel-legs">
+                                    <div class="camel-leg"></div>
+                                    <div class="camel-leg"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="camel camel2">
+                            <div class="camel-body">
+                                <div class="camel-hump"></div>
+                                <div class="camel-neck">
+                                    <div class="camel-head"></div>
+                                </div>
+                                <div class="camel-legs">
+                                    <div class="camel-leg"></div>
+                                    <div class="camel-leg"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="camel camel3">
+                            <div class="camel-body">
+                                <div class="camel-hump"></div>
+                                <div class="camel-neck">
+                                    <div class="camel-head"></div>
+                                </div>
+                                <div class="camel-legs">
+                                    <div class="camel-leg"></div>
+                                    <div class="camel-leg"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SCENE 3: Hot Air Balloon over Heritage -->
+                <div class="scene" id="scene3">
+                    <div class="desert-scene">
+                        <!-- Desert dunes -->
+                        <div class="dune dune1"></div>
+                        <div class="dune dune2"></div>
+                        <div class="dune dune3"></div>
+
+                        <!-- Hot Air Balloon -->
+                        <div class="balloon">
+                            <div class="balloon-envelope">
+                                <div class="balloon-pattern"></div>
+                            </div>
+                            <div class="balloon-rope"></div>
+                            <div class="balloon-basket"></div>
+                        </div>
+
+                        <!-- Heritage Building -->
+                        <div class="heritage-building">
+                            <div class="building-base">
+                                <div class="building-window window-1"></div>
+                                <div class="building-window window-2"></div>
+                                <div class="building-window window-3"></div>
+                                <div class="building-window window-4"></div>
+                                <div class="building-tower">
+                                    <div class="building-dome"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SCENE 4: Night Camping -->
+                <div class="scene" id="scene4">
+                    <div class="desert-scene">
+                        <!-- Moon and Stars -->
+                        <div class="moon">
+                            <div class="moon-crater crater-1"></div>
+                            <div class="moon-crater crater-2"></div>
+                            <div class="moon-crater crater-3"></div>
+                        </div>
+                        <div class="stars">
+                            <div class="star star-1"></div>
+                            <div class="star star-2"></div>
+                            <div class="star star-3"></div>
+                            <div class="star star-4"></div>
+                            <div class="star star-5"></div>
+                        </div>
+
+                        <!-- Desert dunes (darker for night) -->
+                        <div class="dune dune1" style="opacity: 0.4;"></div>
+                        <div class="dune dune2" style="opacity: 0.4;"></div>
+                        <div class="dune dune3" style="opacity: 0.4;"></div>
+
+                        <!-- Tent -->
+                        <div class="tent">
+                            <div class="tent-body">
+                                <div class="tent-door"></div>
+                            </div>
+                        </div>
+
+                        <!-- Campfire -->
+                        <div class="campfire">
+                            <div class="fire-flame"></div>
+                            <div class="fire-logs"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p class="status-text">Preparing your adventure...</p>
+        </div>
+
+        <div class="features">
+            <div class="feature">
+                <svg class="feature-icon" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z"/>
+                </svg>
+                <div class="feature-title">Expert Local Guides</div>
+                <div class="feature-description">Experienced guides with deep knowledge of Saudi culture and hidden treasures</div>
+            </div>
+
+            <div class="feature">
+                <svg class="feature-icon" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
+                </svg>
+                <div class="feature-title">Unique Destinations</div>
+                <div class="feature-description">Explore iconic landmarks and discover hidden gems across the Kingdom</div>
+            </div>
+
+            <div class="feature">
+                <svg class="feature-icon" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                </svg>
+                <div class="feature-title">Premium Experience</div>
+                <div class="feature-description">Carefully curated tours with exceptional service and unforgettable moments</div>
+            </div>
+        </div>
+
+        <p class="footer-text">© 2025 D2D - Dare to Discover. All rights reserved.</p>
+    </div>
+
+    <script>
+        // Rotating scenes with matching status messages
+        const scenes = [
+            { id: 'scene1', message: 'Loading desert off-road adventures...' },
+            { id: 'scene2', message: 'Preparing traditional camel journeys...' },
+            { id: 'scene3', message: 'Curating heritage site experiences...' },
+            { id: 'scene4', message: 'Setting up desert camping adventures...' }
+        ];
+
+        let currentSceneIndex = 0;
+        const statusElement = document.querySelector('.status-text');
+
+        function rotateScene() {
+            // Fade out current scene
+            const currentScene = document.getElementById(scenes[currentSceneIndex].id);
+            currentScene.classList.remove('active');
+
+            // Move to next scene
+            currentSceneIndex = (currentSceneIndex + 1) % scenes.length;
+
+            // Fade out status text
+            statusElement.style.transition = 'opacity 0.5s ease';
+            statusElement.style.opacity = '0';
+
+            setTimeout(() => {
+                // Fade in next scene
+                const nextScene = document.getElementById(scenes[currentSceneIndex].id);
+                nextScene.classList.add('active');
+
+                // Update and fade in status text
+                statusElement.textContent = scenes[currentSceneIndex].message;
+                statusElement.style.opacity = '1';
+            }, 500);
+        }
+
+        // Rotate scenes every 5 seconds
+        setInterval(rotateScene, 5000);
+    </script>
+</body>
+</html>

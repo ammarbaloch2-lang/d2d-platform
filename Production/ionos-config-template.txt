@@ -1,0 +1,79 @@
+IONOS NODE.JS APPLICATION CONFIGURATION
+========================================
+
+When setting up your Node.js app in IONOS Control Panel, use these settings:
+
+APPLICATION SETTINGS:
+---------------------
+
+Node.js Version:        18.x or higher (LTS recommended)
+Application Root:       /htdocs/your-domain/  (adjust based on your path)
+Entry Point:            node_modules/.bin/next
+Arguments:              start -p 3000
+Port:                   3000
+
+ENVIRONMENT VARIABLES:
+----------------------
+
+NODE_ENV=production
+PORT=3000
+
+STARTUP COMMAND (Alternative):
+-------------------------------
+
+If the above doesn't work, try:
+Command: npm
+Arguments: start
+
+DOMAIN CONFIGURATION:
+---------------------
+
+Primary Domain:         your-domain.com
+Document Root:          Same as Application Root
+Enable HTTPS:           Yes (after SSL certificate is set up)
+
+PROCESS MANAGEMENT:
+-------------------
+
+Auto Restart:           Enabled (on crash)
+Max Memory:             512MB - 1GB (depending on your plan)
+
+SSH CONNECTION DETAILS:
+-----------------------
+
+SSH Host:               [Your IONOS SSH hostname]
+SSH Port:               22
+SSH Username:           [Your IONOS username]
+SSH Password:           [Your IONOS password]
+
+FTP CONNECTION DETAILS:
+-----------------------
+
+FTP Host:               [Your IONOS FTP hostname]
+FTP Port:               21
+FTP Username:           [Your IONOS username]
+FTP Password:           [Your IONOS password]
+
+FOLDER STRUCTURE ON SERVER:
+---------------------------
+
+/htdocs/
+  └── your-domain/
+      ├── .next/              (uploaded after build)
+      ├── public/
+      │   └── images/         (your tour images)
+      ├── data/
+      │   └── tours.json      (database)
+      ├── node_modules/       (installed on server)
+      ├── package.json
+      ├── package-lock.json
+      ├── next.config.js
+      └── .htaccess           (if needed)
+
+NOTES:
+------
+
+1. Adjust paths based on your actual IONOS folder structure
+2. Some IONOS plans may have different default directories
+3. Check IONOS documentation for your specific hosting plan
+4. Port 3000 is standard, but check if IONOS requires a different port

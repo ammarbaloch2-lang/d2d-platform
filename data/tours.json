@@ -1,0 +1,149 @@
+[
+  {
+    "id": "1",
+    "title": "Majestic Tayma",
+    "description": "Experience the thrill of dune bashing and enjoy a traditional Bedouin dinner under the stars.",
+    "longDescription": "Join us for an authentic Arabian desert adventure that combines thrilling activities with traditional hospitality.",
+    "price": 3000,
+    "duration": "6 hours",
+    "image": "/images/tayma2.jpg?w=800&q=80",
+    "images": [
+      "/images/tayma2.jpg?w=800&q=80",
+      "/images/tayma3.jpg?w=800&q=80",
+      "/images/tayma4.jpg?w=800&q=80",
+      "/images/tayma1.jpg?w=800&q=80"
+    ],
+    "rating": 4.8,
+    "reviewCount": 245,
+    "location": "Tayma Desert",
+    "category": "desert",
+    "maxCapacity": 15,
+    "includes": [
+      "Hotel pickup and drop-off",
+      "Dune bashing in 4x4 vehicle",
+      "Traditional BBQ dinner"
+    ],
+    "guide": {
+      "name": "Asfar",
+      "bio": "Expert desert guide with 10+ years of experience",
+      "languages": [
+        "Arabic",
+        "English"
+      ],
+      "rating": 4.9
+    },
+    "availableDates": [
+      "2025-10-20",
+      "2025-10-22",
+      "2025-10-25"
+    ],
+    "status": "active",
+    "createdAt": "2025-10-16T00:00:00.000Z",
+    "updatedAt": "2025-10-18T15:47:07.726Z"
+  },
+  {
+    "id": "2",
+    "title": "Homal Tour",
+    "description": "Explore the UNESCO World Heritage site Homal",
+    "price": 200,
+    "duration": "4 hours",
+    "image": "/images/homal3.jpg?w=800&q=80",
+    "images": [
+      "/images/homal1.jpg?w=800&q=80",
+      "/images/homal2.jpg?w=800&q=80",
+      "/images/homal4.jpg?w=800&q=80"
+    ],
+    "rating": 4.9,
+    "reviewCount": 189,
+    "location": "Homal",
+    "category": "cultural",
+    "status": "active",
+    "createdAt": "2025-10-16T00:00:00.000Z",
+    "updatedAt": "2025-10-18T14:38:49.236Z"
+  },
+  {
+    "id": "3",
+    "title": "Bajda",
+    "description": "Breathtaking views from dramatic cliffs of Jebel Fihrayn.",
+    "price": 300,
+    "duration": "8 hours",
+    "image": "/images/bajda3.jpg?w=800&q=80",
+    "images": [
+      "/images/bajda3.jpg?w=800&q=80",
+      "/images/bajda1.jpg?w=800&q=80",
+      "/images/bajda2.jpg?w=800&q=80",
+      "/images/bajda4.jpg?w=800&q=80"
+    ],
+    "rating": 4.7,
+    "reviewCount": 312,
+    "location": "Tabuk",
+    "category": "nature",
+    "status": "active",
+    "createdAt": "2025-10-16T00:00:00.000Z",
+    "updatedAt": "2025-10-18T15:06:36.330Z"
+  },
+  {
+    "id": "4",
+    "title": "Disah Experience",
+    "description": "Ancient Nabataean tombs and stunning rock formations.",
+    "price": 450,
+    "duration": "Full Day",
+    "image": "/images/disah2.jpg?w=800&q=80",
+    "images": [
+      "/images/disah2.jpg?w=800&q=80",
+      "/images/disah1.jpg?w=800&q=80",
+      "/images/disah3.jpg?w=800&q=80",
+      "/images/disah4.jpg?w=800&q=80"
+    ],
+    "rating": 5,
+    "reviewCount": 421,
+    "location": "Wadi Disah",
+    "category": "cultural",
+    "status": "active",
+    "createdAt": "2025-10-16T00:00:00.000Z",
+    "updatedAt": "2025-10-18T15:10:52.884Z"
+  },
+  {
+    "id": "5",
+    "title": "Tabuk",
+    "description": "Discover the historic Tabuk with traditional architecture.",
+    "price": 150,
+    "duration": "3 hours",
+    "image": "/images/tabuk5.jpg?w=800&q=80",
+    "images": [
+      "/images/tabuk5.jpg?w=800&q=80",
+      "/images/tabuk1.jpg?w=800&q=80",
+      "/images/tabuk2.jpg?w=800&q=80",
+      "/images/tabuk3.jpg?w=800&q=80",
+      "/images/tabuk4.jpg?w=800&q=80"
+    ],
+    "rating": 4.6,
+    "reviewCount": 156,
+    "location": "Tabuk",
+    "category": "cultural",
+    "status": "active",
+    "createdAt": "2025-10-16T00:00:00.000Z",
+    "updatedAt": "2025-10-18T15:17:41.140Z"
+  },
+  {
+    "id": "6",
+    "title": "Rijal AlMa'a",
+    "description": "Explore vibrant coral reefs and marine life.",
+    "price": 400,
+    "duration": "5 hours",
+    "image": "/images/rijal4.jpg?w=800&q=80",
+    "images": [
+      "/images/rijal4.jpg?w=800&q=80",
+      "/images/rijal1.jpg?w=800&q=80",
+      "/images/rijal2.jpg?w=800&q=80",
+      "/images/rijal3.jpg?w=800&q=80"
+    ],
+    "rating": 4.9,
+    "reviewCount": 203,
+    "location": "Rijal AlMa'a",
+    "category": "nature",
+    "status": "active",
+    "createdAt": "2025-10-16T00:00:00.000Z",
+    "updatedAt": "2025-10-18T15:28:49.820Z"
+  }
+]

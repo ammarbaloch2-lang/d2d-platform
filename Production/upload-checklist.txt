@@ -1,0 +1,52 @@
+IONOS UPLOAD CHECKLIST
+======================
+
+REQUIRED FILES/FOLDERS TO UPLOAD:
+----------------------------------
+
+[✓] .next/                  - Production build files
+[✓] public/                 - Static assets (images, favicon, etc.)
+[✓] data/                   - Database file (tours.json)
+[✓] package.json            - Dependencies list
+[✓] package-lock.json       - Locked dependency versions
+[✓] next.config.js          - Next.js configuration
+[✓] .htaccess              - Apache configuration (if needed)
+
+OPTIONAL (Can install on server):
+----------------------------------
+
+[ ] node_modules/           - Node.js dependencies
+                             (Better to run 'npm install' on server)
+
+DO NOT UPLOAD:
+--------------
+
+[✗] .git/                   - Git repository
+[✗] .env.local              - Local environment variables
+[✗] .DS_Store               - Mac system files
+[✗] *.log                   - Log files
+[✗] .vscode/                - VS Code settings
+[✗] node_modules/           - If installing on server
+
+UPLOAD SIZE ESTIMATE:
+---------------------
+
+With node_modules:    ~500MB - 1GB
+Without node_modules: ~50-100MB
+
+RECOMMENDED APPROACH:
+---------------------
+
+1. Upload WITHOUT node_modules
+2. SSH into server
+3. Run: npm install --production
+4. This saves upload time and bandwidth
+
+VERIFICATION AFTER UPLOAD:
+--------------------------
+
+[ ] Check .next folder exists
+[ ] Check public/images contains all tour images
+[ ] Check data/tours.json exists and has content
+[ ] Verify package.json is present
+[ ] Confirm next.config.js uploaded correctly
