@@ -88,12 +88,12 @@
     "description": "Ancient Nabataean tombs and stunning rock formations.",
     "price": 450,
     "duration": "Full Day",
-    "image": "/images/disah2.jpg?w=800&q=80",
+    "image": "/images/Disah2.jpg?w=800&q=80",
     "images": [
-      "/images/disah2.jpg?w=800&q=80",
-      "/images/disah1.jpg?w=800&q=80",
-      "/images/disah3.jpg?w=800&q=80",
-      "/images/disah4.jpg?w=800&q=80"
+      "/images/Disah2.jpg?w=800&q=80",
+      "/images/Disah1.jpg?w=800&q=80",
+      "/images/Disah3.jpg?w=800&q=80",
+      "/images/Disah4.jpg?w=800&q=80"
     ],
     "rating": 5,
     "reviewCount": 421,
