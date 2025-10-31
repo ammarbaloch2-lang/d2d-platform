@@ -1,12 +1,12 @@
 import { NextResponse } from 'next/server'
-import { getTourById, updateTour, deleteTour } from '@/lib/tours'
+import { getTourByIdFromKv, updateTourInKv, deleteTourFromKv } from '@/lib/toursDb'
 
 export async function GET(
   request: Request,
   { params }: { params: Promise<{ id: string }> }
 ) {
   const { id } = await params
-  const tour = getTourById(id)
+  const tour = await getTourByIdFromKv(id)
   if (!tour) {
     return NextResponse.json({ error: 'Tour not found' }, { status: 404 })
   }
@@ -20,7 +20,7 @@ export async function PUT(
   try {
     const { id } = await params
     const body = await request.json()
-    const updatedTour = updateTour(id, body)
+    const updatedTour = await updateTourInKv(id, body)
     if (!updatedTour) {
       return NextResponse.json({ error: 'Tour not found' }, { status: 404 })
     }
@@ -35,7 +35,7 @@ export async function DELETE(
   { params }: { params: Promise<{ id: string }> }
 ) {
   const { id } = await params
-  const success = deleteTour(id)
+  const success = await deleteTourFromKv(id)
   if (!success) {
     return NextResponse.json({ error: 'Tour not found' }, { status: 404 })
   }

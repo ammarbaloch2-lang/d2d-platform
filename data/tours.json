@@ -1,10 +1,10 @@
 [
   {
     "id": "1",
-    "title": "Majestic Tayma",
+    "title": "Updated Tayma Tour",
     "description": "Experience the thrill of dune bashing and enjoy a traditional Bedouin dinner under the stars.",
     "longDescription": "Join us for an authentic Arabian desert adventure that combines thrilling activities with traditional hospitality.",
-    "price": 3000,
+    "price": 3500,
     "duration": "6 hours",
     "image": "/images/tayma2.jpg?w=800&q=80",
     "images": [
@@ -39,7 +39,7 @@
     ],
     "status": "active",
     "createdAt": "2025-10-16T00:00:00.000Z",
-    "updatedAt": "2025-10-18T15:47:07.726Z"
+    "updatedAt": "2025-10-31T10:52:17.539Z"
   },
   {
     "id": "2",
