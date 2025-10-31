@@ -44,9 +44,9 @@
   {
     "id": "2",
     "title": "Homal Tour",
-    "description": "Explore the UNESCO World Heritage site Homal",
-    "price": 200,
-    "duration": "4 hours",
+    "description": "In the Footsteps of the Shakespeare of Arabia",
+    "price": 0,
+    "duration": "2 full days",
     "image": "/images/homal3.jpg?w=800&q=80",
     "images": [
       "/images/homal1.jpg?w=800&q=80",
@@ -56,10 +56,11 @@
     "rating": 4.9,
     "reviewCount": 189,
     "location": "Homal",
-    "category": "cultural",
+    "category": "desert",
     "status": "active",
     "createdAt": "2025-10-16T00:00:00.000Z",
-    "updatedAt": "2025-10-18T14:38:49.236Z"
+    "updatedAt": "2025-10-31T10:26:56.985Z",
+    "longDescription": "Imru' al-Qays, a 6th-century Arab poet, is often referred to as the \"Shakespeare of Arabia\" or the \"father of Arabic poetry\". He is credited with establishing many of the conventions and themes that subsequent poets followed. One of his notable contributions is \"ruin poetry,\" where he describes a character stopping at the remains of a campsite and remembering their beloved.\n\nJabal Homel\n\nThe mountains of entry and Homel are about (500) kilometers to the west of Riyadh, and about (150) kilometers north, and the entrance mountains are located west of the mountain, and are about ten kilometers away from it. There is a series of mountains bordering Homel from the south called the mountains of a basin and rugged sand dunes in the shape of veins called the veins of the veins and were formerly called the sand of Abdullah bin Klab, and it is difficult to pass by cars towards Humel, and Jabal Humel is similar to its shape when you look at it from the spring lion from the south, which is a smooth rocky mass with a black texture.\n\nJabal Dakhoul\n\nAs for the entrance, it is a mountain range of plateaus that ends with the well-known entrance towards Humal, and differs in color from Homal and tends to Al-Hamra, and is surrounded by the mountains of entry and Hamul with a number of very old wells, and the sons of the Badia mention that they date back to the pre-Islamic era, and these wells are characterized by the sweetness of water, so that they have become water resources from which they grow, and these wells are located on the west of the entrance mountains, and are only a few meters away from them, while it is located in Jebel Homel and Qar to collect rainwater and floods, and the people of the Badia benefit from it, and the area is famous for being a good pasture area and sprouts some grasses, such as: lavender It is called bitter food, which is a bitter herb, but camels love it and shows its bitterness in the taste of their milk. The mountains of entry and camel were famous in the suspension of Amra al-Qais bin Hajar bin Al-Harith Al-Kindi, the most famous Arab poets ever, and he is Yemeni of origin and his birth to Najd or in the Sakask in Yemen, and his father was the king of the sons of Asad and Ghatfan, and his uncle taught him poetry, so he said to him when he was a boy and the tenth of the Arabs, and when his father reached that, he forbade him and did not finish, so he took him to Hadhramaut, the homeland of his fathers and clan until the revenge of the sons of Asad against his father, so they killed him, and this reached Amr al-Qais while he was sitting drinking wine.\n\nIn the explanation of the comment of Amr al-Qais to the judge Imam Abu Abdullah al-Hassan bin Ahmed bin Al-Hussein that the wife of Al-Qais witnessed the light in Najd in 500 AD probably and lived a scattered life, drinking wine, listening to singing and saying poetry, and this was not the custom of the sons of kings, so his father forbade him from it, so he did not finish, so he took him away from him. Amr al-Qais went out to roam in the land of the Arabs with a group of people like him, drunkenness, orgy and evils, and this remained the matter of Amr al-Qais until the news of the death of his father Hajar came to him, as a result of the sons of Asad denying him and refraining from paying the fees and the outbreak of war between them, where the father of Amr al-Qais was killed in it."
   },
   {
     "id": "3",
