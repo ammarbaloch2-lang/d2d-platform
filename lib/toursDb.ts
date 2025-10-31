@@ -28,7 +28,7 @@ export async function getAllToursFromKv(): Promise<Tour[]> {
   try {
     // Try KV first (Vercel production)
     if (kv) {
-      const tours = await kv.get<Tour[]>(TOURS_KEY)
+      const tours = await (kv.get as (key: string) => Promise<Tour[] | null>)(TOURS_KEY)
       if (tours) return tours
     }
 
