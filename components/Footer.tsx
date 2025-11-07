@@ -228,8 +228,7 @@ export default function Footer() {
                     rel="noopener noreferrer"
                     className="w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-md hover:shadow-lg"
                     style={{
-                      backgroundColor: social.bgColor,
-                      color: social.iconColor || 'white'
+                      backgroundColor: social.bgColor
                     }}
                     aria-label={social.name}
                     title={social.name}
