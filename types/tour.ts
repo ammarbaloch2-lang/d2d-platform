@@ -17,6 +17,7 @@ export interface Tour {
   guide?: TourGuide
   availableDates?: string[]
   status: 'active' | 'inactive'
+  sequence?: number
   createdAt: string
   updatedAt: string
 }
@@ -46,6 +47,7 @@ export interface TourFormData {
   category: string
   maxCapacity: number
   includes: string
+  sequence?: number
   guideName: string
   guideBio: string
   guideLanguages: string

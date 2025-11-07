@@ -21,6 +21,7 @@ export default function NewTourPage() {
     category: 'cultural',
     maxCapacity: '',
     includes: '',
+    sequence: '',
     guideName: '',
     guideBio: '',
     guideLanguages: '',
@@ -68,6 +69,10 @@ export default function NewTourPage() {
 
       if (formData.images) {
         tourData.images = formData.images.split('\n').map(url => url.trim()).filter(url => url)
+      }
+
+      if (formData.sequence) {
+        tourData.sequence = parseInt(formData.sequence)
       }
 
       if (formData.guideName && formData.guideBio) {
@@ -270,6 +275,24 @@ export default function NewTourPage() {
                       <option value="active">Active</option>
                       <option value="inactive">Inactive</option>
                     </select>
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Display Sequence
+                    </label>
+                    <input
+                      type="number"
+                      name="sequence"
+                      value={formData.sequence}
+                      onChange={handleChange}
+                      min="1"
+                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                      placeholder="1, 2, 3, 4..."
+                    />
+                    <p className="text-xs text-gray-500 mt-1">
+                      Order in which tour appears on homepage (lower numbers first)
+                    </p>
                   </div>
 
                   <div className="md:col-span-2">

@@ -72,20 +72,20 @@ export default function Header() {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-1 lg:space-x-2">
+            <Link href="/" className={`relative px-4 py-2 font-montserrat font-semibold text-sm transition-colors duration-200 group ${
+              isActive('/') ? 'text-primary' : 'text-gray-700 hover:text-primary'
+            }`}>
+              <span className="relative z-10">Home</span>
+              <span className={`absolute inset-0 bg-gradient-to-r from-primary/10 to-secondary/10 rounded-lg transition-opacity duration-200 ${
+                isActive('/') ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
+              }`}></span>
+            </Link>
             <Link href="/tours" className={`relative px-4 py-2 font-montserrat font-semibold text-sm transition-colors duration-200 group ${
               isActive('/tours') ? 'text-primary' : 'text-gray-700 hover:text-primary'
             }`}>
               <span className="relative z-10">Tours</span>
               <span className={`absolute inset-0 bg-gradient-to-r from-primary/10 to-secondary/10 rounded-lg transition-opacity duration-200 ${
                 isActive('/tours') ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
-              }`}></span>
-            </Link>
-            <Link href="/experiences" className={`relative px-4 py-2 font-montserrat font-semibold text-sm transition-colors duration-200 group ${
-              isActive('/experiences') ? 'text-primary' : 'text-gray-700 hover:text-primary'
-            }`}>
-              <span className="relative z-10">Experiences</span>
-              <span className={`absolute inset-0 bg-gradient-to-r from-primary/10 to-secondary/10 rounded-lg transition-opacity duration-200 ${
-                isActive('/experiences') ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
               }`}></span>
             </Link>
             <Link href="/gallery" className={`relative px-4 py-2 font-montserrat font-semibold text-sm transition-colors duration-200 group ${
@@ -128,19 +128,19 @@ export default function Header() {
         {/* Mobile Menu */}
         {isMenuOpen && (
           <div className="md:hidden mt-6 pb-4 space-y-2 animate-fadeIn">
+            <Link href="/" className={`block px-4 py-3 font-montserrat font-semibold rounded-lg transition-all duration-200 ${
+              isActive('/')
+                ? 'text-primary bg-gradient-to-r from-primary/10 to-secondary/10'
+                : 'text-gray-700 hover:text-primary hover:bg-gradient-to-r hover:from-primary/10 hover:to-secondary/10'
+            }`}>
+              Home
+            </Link>
             <Link href="/tours" className={`block px-4 py-3 font-montserrat font-semibold rounded-lg transition-all duration-200 ${
               isActive('/tours')
                 ? 'text-primary bg-gradient-to-r from-primary/10 to-secondary/10'
                 : 'text-gray-700 hover:text-primary hover:bg-gradient-to-r hover:from-primary/10 hover:to-secondary/10'
             }`}>
               Tours
-            </Link>
-            <Link href="/experiences" className={`block px-4 py-3 font-montserrat font-semibold rounded-lg transition-all duration-200 ${
-              isActive('/experiences')
-                ? 'text-primary bg-gradient-to-r from-primary/10 to-secondary/10'
-                : 'text-gray-700 hover:text-primary hover:bg-gradient-to-r hover:from-primary/10 hover:to-secondary/10'
-            }`}>
-              Experiences
             </Link>
             <Link href="/gallery" className={`block px-4 py-3 font-montserrat font-semibold rounded-lg transition-all duration-200 ${
               isActive('/gallery')

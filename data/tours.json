@@ -38,6 +38,7 @@
       "2025-10-25"
     ],
     "status": "active",
+    "sequence": 4,
     "createdAt": "2025-10-16T00:00:00.000Z",
     "updatedAt": "2025-10-31T10:52:17.539Z"
   },
@@ -60,7 +61,8 @@
     "status": "active",
     "createdAt": "2025-10-16T00:00:00.000Z",
     "updatedAt": "2025-10-31T10:26:56.985Z",
-    "longDescription": "Imru' al-Qays, a 6th-century Arab poet, is often referred to as the \"Shakespeare of Arabia\" or the \"father of Arabic poetry\". He is credited with establishing many of the conventions and themes that subsequent poets followed. One of his notable contributions is \"ruin poetry,\" where he describes a character stopping at the remains of a campsite and remembering their beloved.\n\nJabal Homel\n\nThe mountains of entry and Homel are about (500) kilometers to the west of Riyadh, and about (150) kilometers north, and the entrance mountains are located west of the mountain, and are about ten kilometers away from it. There is a series of mountains bordering Homel from the south called the mountains of a basin and rugged sand dunes in the shape of veins called the veins of the veins and were formerly called the sand of Abdullah bin Klab, and it is difficult to pass by cars towards Humel, and Jabal Humel is similar to its shape when you look at it from the spring lion from the south, which is a smooth rocky mass with a black texture.\n\nJabal Dakhoul\n\nAs for the entrance, it is a mountain range of plateaus that ends with the well-known entrance towards Humal, and differs in color from Homal and tends to Al-Hamra, and is surrounded by the mountains of entry and Hamul with a number of very old wells, and the sons of the Badia mention that they date back to the pre-Islamic era, and these wells are characterized by the sweetness of water, so that they have become water resources from which they grow, and these wells are located on the west of the entrance mountains, and are only a few meters away from them, while it is located in Jebel Homel and Qar to collect rainwater and floods, and the people of the Badia benefit from it, and the area is famous for being a good pasture area and sprouts some grasses, such as: lavender It is called bitter food, which is a bitter herb, but camels love it and shows its bitterness in the taste of their milk. The mountains of entry and camel were famous in the suspension of Amra al-Qais bin Hajar bin Al-Harith Al-Kindi, the most famous Arab poets ever, and he is Yemeni of origin and his birth to Najd or in the Sakask in Yemen, and his father was the king of the sons of Asad and Ghatfan, and his uncle taught him poetry, so he said to him when he was a boy and the tenth of the Arabs, and when his father reached that, he forbade him and did not finish, so he took him to Hadhramaut, the homeland of his fathers and clan until the revenge of the sons of Asad against his father, so they killed him, and this reached Amr al-Qais while he was sitting drinking wine.\n\nIn the explanation of the comment of Amr al-Qais to the judge Imam Abu Abdullah al-Hassan bin Ahmed bin Al-Hussein that the wife of Al-Qais witnessed the light in Najd in 500 AD probably and lived a scattered life, drinking wine, listening to singing and saying poetry, and this was not the custom of the sons of kings, so his father forbade him from it, so he did not finish, so he took him away from him. Amr al-Qais went out to roam in the land of the Arabs with a group of people like him, drunkenness, orgy and evils, and this remained the matter of Amr al-Qais until the news of the death of his father Hajar came to him, as a result of the sons of Asad denying him and refraining from paying the fees and the outbreak of war between them, where the father of Amr al-Qais was killed in it."
+    "longDescription": "Imru' al-Qays, a 6th-century Arab poet, is often referred to as the \"Shakespeare of Arabia\" or the \"father of Arabic poetry\". He is credited with establishing many of the conventions and themes that subsequent poets followed. One of his notable contributions is \"ruin poetry,\" where he describes a character stopping at the remains of a campsite and remembering their beloved.\n\nJabal Homel\n\nThe mountains of entry and Homel are about (500) kilometers to the west of Riyadh, and about (150) kilometers north, and the entrance mountains are located west of the mountain, and are about ten kilometers away from it. There is a series of mountains bordering Homel from the south called the mountains of a basin and rugged sand dunes in the shape of veins called the veins of the veins and were formerly called the sand of Abdullah bin Klab, and it is difficult to pass by cars towards Humel, and Jabal Humel is similar to its shape when you look at it from the spring lion from the south, which is a smooth rocky mass with a black texture.\n\nJabal Dakhoul\n\nAs for the entrance, it is a mountain range of plateaus that ends with the well-known entrance towards Humal, and differs in color from Homal and tends to Al-Hamra, and is surrounded by the mountains of entry and Hamul with a number of very old wells, and the sons of the Badia mention that they date back to the pre-Islamic era, and these wells are characterized by the sweetness of water, so that they have become water resources from which they grow, and these wells are located on the west of the entrance mountains, and are only a few meters away from them, while it is located in Jebel Homel and Qar to collect rainwater and floods, and the people of the Badia benefit from it, and the area is famous for being a good pasture area and sprouts some grasses, such as: lavender It is called bitter food, which is a bitter herb, but camels love it and shows its bitterness in the taste of their milk. The mountains of entry and camel were famous in the suspension of Amra al-Qais bin Hajar bin Al-Harith Al-Kindi, the most famous Arab poets ever, and he is Yemeni of origin and his birth to Najd or in the Sakask in Yemen, and his father was the king of the sons of Asad and Ghatfan, and his uncle taught him poetry, so he said to him when he was a boy and the tenth of the Arabs, and when his father reached that, he forbade him and did not finish, so he took him to Hadhramaut, the homeland of his fathers and clan until the revenge of the sons of Asad against his father, so they killed him, and this reached Amr al-Qais while he was sitting drinking wine.\n\nIn the explanation of the comment of Amr al-Qais to the judge Imam Abu Abdullah al-Hassan bin Ahmed bin Al-Hussein that the wife of Al-Qais witnessed the light in Najd in 500 AD probably and lived a scattered life, drinking wine, listening to singing and saying poetry, and this was not the custom of the sons of kings, so his father forbade him from it, so he did not finish, so he took him away from him. Amr al-Qais went out to roam in the land of the Arabs with a group of people like him, drunkenness, orgy and evils, and this remained the matter of Amr al-Qais until the news of the death of his father Hajar came to him, as a result of the sons of Asad denying him and refraining from paying the fees and the outbreak of war between them, where the father of Amr al-Qais was killed in it.",
+    "sequence": 5
   },
   {
     "id": "3",
@@ -81,7 +83,8 @@
     "category": "nature",
     "status": "active",
     "createdAt": "2025-10-16T00:00:00.000Z",
-    "updatedAt": "2025-10-18T15:06:36.330Z"
+    "updatedAt": "2025-10-18T15:06:36.330Z",
+    "sequence": 6
   },
   {
     "id": "4",
@@ -102,7 +105,8 @@
     "category": "cultural",
     "status": "active",
     "createdAt": "2025-10-16T00:00:00.000Z",
-    "updatedAt": "2025-10-18T15:10:52.884Z"
+    "updatedAt": "2025-10-18T15:10:52.884Z",
+    "sequence": 7
   },
   {
     "id": "5",
@@ -124,7 +128,8 @@
     "category": "cultural",
     "status": "active",
     "createdAt": "2025-10-16T00:00:00.000Z",
-    "updatedAt": "2025-10-18T15:17:41.140Z"
+    "updatedAt": "2025-10-18T15:17:41.140Z",
+    "sequence": 8
   },
   {
     "id": "6",
@@ -145,6 +150,117 @@
     "category": "nature",
     "status": "active",
     "createdAt": "2025-10-16T00:00:00.000Z",
-    "updatedAt": "2025-10-18T15:28:49.820Z"
+    "updatedAt": "2025-10-18T15:28:49.820Z",
+    "sequence": 9
+  },
+  {
+    "title": "Ancient Masil — The Carved Secrets of Arabia's Past",
+    "description": "Discover ancient rock inscriptions and forgotten wells at Masil—a remarkable archaeological landscape where pre-Islamic heritage is etched into timeless stone.",
+    "price": 999,
+    "duration": "12 hours",
+    "image": "/images/Masil1.jpg",
+    "location": "Dawadmi",
+    "category": "adventure",
+    "rating": 4.5,
+    "reviewCount": 0,
+    "status": "active",
+    "longDescription": "Step into the ancient chapters of Arabia at Masil, a remarkable archaeological and natural landscape where pre-Islamic and Islamic heritage whisper through carved stone. Located in the heart of Al-Dawadmi, this full-day adventure takes you to one of central Arabia's most intriguing historical sites.\n\nMasil is a living museum of Arabia's past. Ancient rock inscriptions and carvings tell stories of traders, pilgrims, and nomadic tribes who traversed these lands centuries ago. Scattered across dramatic sandstone formations are remnants of forgotten wells, some still holding memories of those who carved them from solid rock, and abandoned stone structures that hint at settlements long lost to time.\n\nOur journey combines archaeology with natural beauty. Trek through scenic valleys framed by golden dunes and weathered rock formations perfect for photography. Your expert guides will unveil the mysteries of the inscriptions and share the historical significance of each site. From sunrise exploration to golden hour photography sessions, every moment at Masil reveals a new layer of Arabia's untold stories.\n\nWhether you're a history enthusiast, adventure seeker, or passionate photographer, Masil offers an intimate encounter with Arabia's ancient soul—a place where history is written in stone.",
+    "includes": [
+      "Ancient Rock Inscriptions",
+      "Tour Guide",
+      "4x4 Vehicle",
+      "Snacks",
+      "Lunch"
+    ],
+    "images": [
+      "/images/Masil1.jpg",
+      "/images/Masil2.jpg",
+      "/images/Masil3.jpg",
+      "/images/Masil4.jpg",
+      "/images/Masil5.jpg",
+      "/images/Masil6.jpg",
+      "/images/Masil7.jpg",
+      "/images/Masil8.jpg",
+      "/images/Masil9.jpg",
+      "/images/Masil10.jpg"
+    ],
+    "id": "1762522945728",
+    "createdAt": "2025-11-07T13:42:25.728Z",
+    "updatedAt": "2025-11-07T20:10:09.532Z",
+    "sequence": 2
+  },
+  {
+    "title": "Abu Jifan Fort — The Forgotten Fortress of the Desert",
+    "description": "Step back in time and explore Abu Jifan Fort, a centuries-old desert stronghold that once guarded ancient trade routes — surrounded by stunning valleys, dunes, and traces of Arabia’s timeless heritage.",
+    "price": 699,
+    "duration": "10 hours",
+    "image": "/images/Aj1.jpg",
+    "location": "Al Kharj",
+    "category": "historical",
+    "rating": 4.5,
+    "reviewCount": 0,
+    "status": "active",
+    "longDescription": "Embark on a captivating full-day journey to Abu Jifan Fort, an iconic historical site nestled deep within the Saudi desert. Built in the 18th century, this fortress once stood as a key defense post protecting travelers and traders crossing central Arabia.\n\nOur adventure begins from Riyadh with scenic stops along the way to admire the vast desert plains. By midday, we reach the Abu Jifan Fort, where our guides will share stories of its strategic importance and restoration efforts. The area also offers ancient well sites, rocky plateaus, and soft sand dunes perfect for exploration and photography.",
+    "includes": [
+      "Transportation (optional pickup available)",
+      "Snacks and bottled water",
+      "Light lunch at desert basecamp",
+      "Guided tour of Abu Jifan Fort",
+      "Photography and exploration time",
+      "Safety gear and first-aid support"
+    ],
+    "images": [
+      "/images/Aj1.jpg",
+      "/images/Aj2.jpg",
+      "/images/Aj3.jpg",
+      "/images/Aj4.jpg",
+      "/images/Aj5.jpg",
+      "/images/Aj6.jpg",
+      "/images/Aj7.jpg",
+      "/images/Aj8.jpg",
+      "/images/Aj9.jpg"
+    ],
+    "id": "1762524353120",
+    "createdAt": "2025-11-07T14:05:53.120Z",
+    "updatedAt": "2025-11-07T20:10:30.124Z",
+    "sequence": 3
+  },
+  {
+    "title": "Ijzala Rock Wonderland — Nature’s Stone Garden",
+    "description": "Discover Ijzala, a surreal landscape of giant sculpted rocks and smooth desert valleys — a perfect destination for nature lovers, photographers, and explorers seeking a peaceful off-road escape.",
+    "price": 599,
+    "duration": "Full Day",
+    "image": "/images/Ij1.jpg",
+    "location": "Al Quawaya",
+    "category": "nature",
+    "rating": 4.5,
+    "reviewCount": 0,
+    "status": "active",
+    "longDescription": "Welcome to Ijzala, a hidden gem where nature’s artistry is on full display. Massive rounded boulders, shaped by wind and time, rise gracefully across wide desert plains — creating one of the most photogenic and tranquil landscapes in central Arabia.\n\nThis unique destination blends serenity with adventure. Whether you wander through the rocky passages, climb gentle formations for a panoramic view, or simply relax in the peaceful stillness of the desert, Ijzala offers a rare connection with nature’s raw beauty.\n\nPerfect for photographers, explorers, and camping enthusiasts, Ijzala is not about ancient ruins or cities — it’s about timeless landscapes and the quiet power of nature itself.",
+    "includes": [
+      "Transportation (optional pickup available)",
+      "Snacks and bottled water",
+      "Lunch or dinner depending on trip duration",
+      "Guided desert exploration and photography support",
+      "Safety gear and first-aid support"
+    ],
+    "images": [
+      "/images/Ij1.jpg",
+      "/images/Ij2.jpg",
+      "/images/Ij3.jpg",
+      "/images/Ij4.jpg",
+      "/images/Ij5.jpg",
+      "/images/Ij6.jpg",
+      "/images/Ij7.jpg",
+      "/images/Ij8.jpg",
+      "/images/Ij9.jpg",
+      "/images/Ij10.jpg",
+      "/images/Ij11.jpg",
+      "/images/Ij12.jpg"
+    ],
+    "id": "1762526028354",
+    "createdAt": "2025-11-07T14:33:48.354Z",
+    "updatedAt": "2025-11-07T20:10:48.128Z",
+    "sequence": 1
   }
 ]

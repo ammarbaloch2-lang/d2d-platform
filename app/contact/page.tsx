@@ -406,7 +406,7 @@ export default function ContactPage() {
           </h2>
           <div className="rounded-lg overflow-hidden shadow-xl">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3628.746845575742!2d46.64513897536143!3d24.56340887812446!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjTCsDMzJzQ4LjMiTiA0NsKwMzgnNTEuOCJF!5e0!3m2!1sen!2ssa!4v1761302521316!5m2!1sen!2ssa"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d907.1873741314353!2d46.647728!3d24.563317299999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e2f11ef052a9783%3A0xcfaea0927d981294!2sDare2Discover!5e0!3m2!1sen!2ssa!4v1762519374980!5m2!1sen!2ssa"
               width="100%"
               height="450"
               style={{ border: 0 }}

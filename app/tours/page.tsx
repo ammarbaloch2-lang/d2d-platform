@@ -86,6 +86,13 @@ function ToursContent() {
       filtered.sort((a, b) => b.price - a.price)
     } else if (sortBy === 'rating') {
       filtered.sort((a, b) => b.rating - a.rating)
+    } else {
+      // Default 'popular' sort - by sequence number
+      filtered.sort((a, b) => {
+        const seqA = a.sequence || Infinity
+        const seqB = b.sequence || Infinity
+        return seqA - seqB
+      })
     }
 
     console.log('✅ Final filtered tours:', filtered.length)

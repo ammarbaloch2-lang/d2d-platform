@@ -3,7 +3,7 @@
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import { useState, useEffect } from 'react'
-import { useParams, useRouter } from 'next/navigation'
+import { useParams } from 'next/navigation'
 import Link from 'next/link'
 import Image from 'next/image'
 import { Tour } from '@/types/tour'
@@ -97,15 +97,19 @@ const tourData: any = {
 
 export default function TourDetailPage() {
   const params = useParams()
-  const router = useRouter()
-  const [selectedDate, setSelectedDate] = useState('')
-  const [numberOfPeople, setNumberOfPeople] = useState(1)
-  const [showBookingModal, setShowBookingModal] = useState(false)
   const [tour, setTour] = useState<Tour | null>(null)
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
   const [loading, setLoading] = useState(true)
   const [lightboxOpen, setLightboxOpen] = useState(false)
   const [lightboxIndex, setLightboxIndex] = useState(0)
+  const [emailFormData, setEmailFormData] = useState({
+    name: '',
+    email: '',
+    message: '',
+  })
+  const [emailSubmitting, setEmailSubmitting] = useState(false)
+  const [emailSubmitStatus, setEmailSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
+  const [emailErrorMessage, setEmailErrorMessage] = useState('')
 
   useEffect(() => {
     // Fetch tour from API
@@ -177,20 +181,54 @@ export default function TourDetailPage() {
     setLightboxIndex((prev) => (prev - 1 + galleryImages.length) % galleryImages.length)
   }
 
-  const handleBookNow = () => {
-    if (!selectedDate) {
-      alert('Please select a date')
-      return
+  const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setEmailFormData({
+      ...emailFormData,
+      [e.target.name]: e.target.value,
+    })
+  }
+
+  const handleEmailSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setEmailSubmitting(true)
+    setEmailSubmitStatus('idle')
+    setEmailErrorMessage('')
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: emailFormData.name,
+          email: emailFormData.email,
+          phone: '',
+          subject: `Tour Inquiry: ${tour?.title}`,
+          message: emailFormData.message,
+        }),
+      })
+
+      const data = await response.json()
+
+      if (response.ok) {
+        setEmailSubmitStatus('success')
+        setEmailFormData({ name: '', email: '', message: '' })
+
+        // Reset success message after 5 seconds
+        setTimeout(() => setEmailSubmitStatus('idle'), 5000)
+      } else {
+        setEmailSubmitStatus('error')
+        setEmailErrorMessage(data.error || 'Failed to send message. Please try again.')
+      }
+    } catch (error) {
+      console.error('Email form submission error:', error)
+      setEmailSubmitStatus('error')
+      setEmailErrorMessage('An unexpected error occurred. Please try again later.')
+    } finally {
+      setEmailSubmitting(false)
     }
-    setShowBookingModal(true)
   }
-
-  const handleConfirmBooking = () => {
-    // In real app, this would make API call
-    router.push('/booking/confirmation')
-  }
-
-  const totalPrice = tour.price * numberOfPeople
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -377,7 +415,7 @@ export default function TourDetailPage() {
             )}
           </div>
 
-          {/* Booking Sidebar */}
+          {/* WhatsApp Booking Button */}
           <div className="lg:col-span-1">
             <div className="bg-white rounded-lg shadow-xl p-6 sticky top-24">
               <div className="text-center mb-6">
@@ -387,120 +425,134 @@ export default function TourDetailPage() {
               </div>
 
               <div className="space-y-4">
-                {/* Date Selection */}
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Select Date
-                  </label>
-                  <select
-                    className="input-field"
-                    value={selectedDate}
-                    onChange={(e) => setSelectedDate(e.target.value)}
-                  >
-                    <option value="">Choose a date</option>
-                    {tour.availableDates && tour.availableDates.map((date: string) => (
-                      <option key={date} value={date}>
-                        {new Date(date).toLocaleDateString('en-US', {
-                          weekday: 'short',
-                          year: 'numeric',
-                          month: 'short',
-                          day: 'numeric'
-                        })}
-                      </option>
-                    ))}
-                  </select>
-                </div>
+                <p className="text-sm text-gray-600 text-center">
+                  Ready to book this amazing experience? Chat with our D2D Team on WhatsApp!
+                </p>
 
-                {/* Number of People */}
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Number of People
-                  </label>
-                  <input
-                    type="number"
-                    min="1"
-                    max={tour.maxCapacity || 20}
-                    className="input-field"
-                    value={numberOfPeople}
-                    onChange={(e) => setNumberOfPeople(parseInt(e.target.value) || 1)}
-                  />
-                  {tour.maxCapacity && (
-                    <p className="text-xs text-gray-500 mt-1">
-                      Max {tour.maxCapacity} people per booking
-                    </p>
-                  )}
-                </div>
-
-                {/* Total Price */}
-                <div className="border-t pt-4">
-                  <div className="flex justify-between items-center mb-2">
-                    <span className="text-gray-600">SAR {tour.price} x {numberOfPeople}</span>
-                    <span className="font-semibold">SAR {tour.price * numberOfPeople}</span>
-                  </div>
-                  <div className="flex justify-between items-center text-lg font-bold">
-                    <span>Total</span>
-                    <span className="text-primary">SAR {totalPrice}</span>
-                  </div>
-                </div>
-
-                <button
-                  onClick={handleBookNow}
-                  className="btn-primary w-full"
+                <a
+                  href={`https://wa.me/966541331211?text=${encodeURIComponent(
+                    `Hi! I'm interested in booking the "${tour.title}" tour. Page: ${typeof window !== 'undefined' ? window.location.href : `/tours/${params.id}`}`
+                  )}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-lg flex items-center justify-center gap-2 transition-colors"
                 >
-                  Book Now
-                </button>
+                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                  </svg>
+                  Chat on WhatsApp
+                </a>
 
                 <p className="text-xs text-center text-gray-500">
-                  Instant confirmation • Free cancellation up to 24h
+                  Quick response • Available during working hours (Sun-Thu: 9 AM - 6 PM)
                 </p>
+
+                <div className="border-t pt-4 mt-4">
+                  <p className="text-sm text-gray-600 text-center mb-3">
+                    <strong>What to expect:</strong>
+                  </p>
+                  <ul className="text-xs text-gray-600 space-y-1">
+                    <li className="flex items-start">
+                      <span className="text-green-500 mr-2">✓</span>
+                      <span>Personalized tour recommendations</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-green-500 mr-2">✓</span>
+                      <span>Flexible date & group size options</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-green-500 mr-2">✓</span>
+                      <span>Special packages & discounts</span>
+                    </li>
+                  </ul>
+                </div>
+
+                {/* Email Inquiry Alternative */}
+                <div className="border-t pt-4 mt-4">
+                  <p className="text-sm text-gray-600 text-center mb-4">
+                    <strong>Or Send Us an Email</strong>
+                  </p>
+
+                  {emailSubmitStatus === 'success' && (
+                    <div className="mb-4 p-3 bg-green-50 border border-green-200 rounded-lg">
+                      <div className="flex items-center">
+                        <svg className="w-5 h-5 text-green-600 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                        <p className="text-green-800 font-semibold text-sm">Email sent successfully!</p>
+                      </div>
+                    </div>
+                  )}
+
+                  {emailSubmitStatus === 'error' && (
+                    <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-lg">
+                      <div className="flex items-start">
+                        <svg className="w-5 h-5 text-red-600 mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                        <div>
+                          <p className="text-red-800 font-semibold text-sm">Failed to send</p>
+                          <p className="text-red-700 text-xs mt-1">{emailErrorMessage}</p>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  <form onSubmit={handleEmailSubmit} className="space-y-3">
+                    <div>
+                      <input
+                        type="text"
+                        name="name"
+                        value={emailFormData.name}
+                        onChange={handleEmailChange}
+                        required
+                        placeholder="Your name"
+                        className="w-full px-3 py-2 border border-gray-300 rounded text-sm focus:outline-none focus:ring-2 focus:ring-primary"
+                      />
+                    </div>
+
+                    <div>
+                      <input
+                        type="email"
+                        name="email"
+                        value={emailFormData.email}
+                        onChange={handleEmailChange}
+                        required
+                        placeholder="your@email.com"
+                        className="w-full px-3 py-2 border border-gray-300 rounded text-sm focus:outline-none focus:ring-2 focus:ring-primary"
+                      />
+                    </div>
+
+                    <div>
+                      <textarea
+                        name="message"
+                        value={emailFormData.message}
+                        onChange={handleEmailChange}
+                        required
+                        placeholder="Tell us about your tour interests..."
+                        rows={3}
+                        className="w-full px-3 py-2 border border-gray-300 rounded text-sm focus:outline-none focus:ring-2 focus:ring-primary resize-none"
+                      />
+                    </div>
+
+                    <button
+                      type="submit"
+                      disabled={emailSubmitting}
+                      className="w-full bg-primary hover:bg-primary-dark text-white font-bold py-2 px-4 rounded text-sm disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                    >
+                      {emailSubmitting ? 'Sending...' : 'Send Email'}
+                    </button>
+                  </form>
+
+                  <p className="text-xs text-center text-gray-500 mt-3">
+                    We'll contact you within 24 hours
+                  </p>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-
-      {/* Booking Modal */}
-      {showBookingModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-lg max-w-md w-full p-6">
-            <h3 className="text-2xl font-bold mb-4">Confirm Your Booking</h3>
-            <div className="space-y-3 mb-6">
-              <div>
-                <span className="font-semibold">Tour:</span> {tour.title}
-              </div>
-              <div>
-                <span className="font-semibold">Date:</span> {new Date(selectedDate).toLocaleDateString('en-US', {
-                  weekday: 'long',
-                  year: 'numeric',
-                  month: 'long',
-                  day: 'numeric'
-                })}
-              </div>
-              <div>
-                <span className="font-semibold">People:</span> {numberOfPeople}
-              </div>
-              <div className="text-xl font-bold text-primary">
-                Total: SAR {totalPrice}
-              </div>
-            </div>
-
-            <div className="flex space-x-3">
-              <button
-                onClick={() => setShowBookingModal(false)}
-                className="flex-1 px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50"
-              >
-                Cancel
-              </button>
-              <button
-                onClick={handleConfirmBooking}
-                className="flex-1 btn-primary"
-              >
-                Proceed to Payment
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
 
       {/* Image Lightbox Modal */}
       {lightboxOpen && (
