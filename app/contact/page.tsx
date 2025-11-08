@@ -194,8 +194,8 @@ export default function ContactPage() {
                 </div>
                 <div className="ml-4">
                   <h3 className="text-lg font-bold text-gray-900">Email</h3>
-                  <a href="mailto:info@dare2discover.sa" className="text-gray-600 hover:text-primary transition-colors">
-                    info@dare2discover.sa
+                  <a href="mailto:contact@dare2discover.sa" className="text-gray-600 hover:text-primary transition-colors">
+                    contact@dare2discover.sa
                   </a>
                 </div>
               </div>
