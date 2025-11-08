@@ -244,7 +244,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="border-t border-white/20 mt-10 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-300">
-            <p>&copy; {new Date().getFullYear()} Saudi Tourism Group - Dare2Discover. All rights reserved.</p>
+            <p>&copy; {new Date().getFullYear()} Dare2Discover. All rights reserved.</p>
             <div className="flex items-center gap-4">
               <Link href="/privacy-policy" className="hover:text-primary transition-colors">
                 Privacy Policy
