@@ -36,7 +36,7 @@ export async function POST(request: Request) {
 
     // Email content
     const mailOptions = {
-      from: process.env.SMTP_FROM || process.env.SMTP_USER,
+      from: `"Dare2Discover" <${process.env.SMTP_FROM || process.env.SMTP_USER}>`,
       to: 'contact@dare2discover.sa',
       subject: `D2D Contact Form: ${subject}`,
       html: `
@@ -109,7 +109,7 @@ ${message}
 
     // Send auto-reply to customer
     const autoReplyOptions = {
-      from: process.env.SMTP_FROM || process.env.SMTP_USER,
+      from: `"Dare2Discover" <${process.env.SMTP_FROM || process.env.SMTP_USER}>`,
       to: email,
       subject: 'Thank you for contacting Dare2Discover',
       html: `
