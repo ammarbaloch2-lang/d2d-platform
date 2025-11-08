@@ -103,28 +103,30 @@ export default function Home() {
           />
         </video>
 
-        {/* Dark Overlay - Bottom portion only for better readability */}
-        <div className="absolute bottom-0 inset-x-0 h-1/3 bg-gradient-to-t from-black/80 to-transparent"></div>
+        {/* Dark Overlay for better text readability */}
+        <div className="absolute inset-0 bg-black/20"></div>
 
-        {/* Text & Button Container */}
-        <div className="absolute inset-0 flex flex-col items-center justify-between text-center px-4 py-8">
-          {/* Opening Text - Top */}
-          <div className="animate-fadeIn">
-            <h2 className="text-2xl md:text-4xl lg:text-5xl font-russo font-bold text-white mb-2 leading-tight drop-shadow-lg">
+        {/* Text Overlays - Centered */}
+        <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
+          {/* Opening Text */}
+          <div className="mb-8 animate-fadeIn">
+            <h2 className="text-3xl md:text-5xl lg:text-6xl font-russo font-bold text-white mb-4 leading-tight drop-shadow-lg">
               Explore <span className="bg-gradient-to-r from-yellow-400 to-yellow-300 bg-clip-text text-transparent">Saudi Arabia</span>
             </h2>
-            <p className="text-sm md:text-lg text-white/90 font-montserrat font-semibold drop-shadow-md">
+            <p className="text-lg md:text-2xl text-white/90 font-montserrat font-semibold drop-shadow-md">
               Like Never Before
             </p>
           </div>
 
-          {/* CTA Button - Bottom */}
-          <Link
-            href="/tours"
-            className="inline-block px-8 py-3 md:px-12 md:py-4 bg-gradient-to-r from-primary to-secondary text-white font-bold text-base md:text-lg rounded-full hover:shadow-2xl transform hover:scale-105 transition-all duration-300 drop-shadow-lg"
-          >
-            Start Your Adventure
-          </Link>
+          {/* CTA Button */}
+          <div className="mt-8">
+            <Link
+              href="/tours"
+              className="inline-block px-8 py-3 md:px-12 md:py-4 bg-gradient-to-r from-primary to-secondary text-white font-bold text-base md:text-lg rounded-full hover:shadow-2xl transform hover:scale-105 transition-all duration-300 drop-shadow-lg"
+            >
+              Start Your Adventure
+            </Link>
+          </div>
         </div>
       </section>
 
