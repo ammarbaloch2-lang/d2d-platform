@@ -91,8 +91,7 @@ export default function Home() {
           playsInline
           poster="/images/banner.png"
         >
-          <source src="/images/promo.mov" type="video/quicktime" />
-          <source src="/images/promo.mp4" type="video/mp4" />
+          <source src="/images/promo1.mp4" type="video/mp4" />
           {/* Fallback Image */}
           <Image
             src="/images/banner.png"
