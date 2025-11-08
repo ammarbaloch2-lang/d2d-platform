@@ -17,10 +17,6 @@ interface CloudinaryImage {
   }
 }
 
-// Cloudinary API credentials
-const CLOUD_NAME = 'dcammumm9'
-const API_KEY = '464487176886491'
-
 const categories = [
   { id: 'all', name: 'All Photos', icon: '🖼️' },
 ]
@@ -34,20 +30,12 @@ export default function GalleryPage() {
   const [viewMode, setViewMode] = useState<'grid' | 'slideshow'>('grid')
   const [slideshowIndex, setSlideshowIndex] = useState(0)
 
-  // Fetch images from Cloudinary
+  // Fetch images from Cloudinary API
   useEffect(() => {
     const fetchImages = async () => {
       try {
         setLoading(true)
-        const response = await fetch(
-          `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/resources/image?max_results=500`,
-          {
-            method: 'GET',
-            headers: {
-              'Authorization': `Basic ${Buffer.from(`_:${API_KEY}`).toString('base64')}`,
-            },
-          }
-        )
+        const response = await fetch('/api/cloudinary-images')
 
         if (!response.ok) {
           throw new Error('Failed to fetch images from Cloudinary')
