@@ -84,12 +84,6 @@ export default function GalleryPage() {
           />
         </div>
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-transparent"></div>
-        <div className="relative h-full flex items-center justify-center">
-          <div className="text-center text-white">
-            <h1 className="text-5xl md:text-6xl font-bold mb-4">Photo Gallery</h1>
-            <p className="text-xl md:text-2xl">Discover the Beauty of Saudi Arabia</p>
-          </div>
-        </div>
       </section>
 
       {/* View Mode Toggle & Controls */}
@@ -174,12 +168,6 @@ export default function GalleryPage() {
       {/* Grid View */}
       {!loading && !error && viewMode === 'grid' && (
         <section className="container mx-auto px-4 py-12">
-          <div className="mb-6">
-            <p className="text-gray-600 text-center">
-              <span className="font-semibold text-primary">{images.length}</span> photos in gallery
-            </p>
-          </div>
-
           {images.length > 0 ? (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
               {images.map((image, idx) => (
@@ -308,10 +296,6 @@ export default function GalleryPage() {
               />
             </div>
 
-            <div className="bg-white p-6 rounded-b-lg">
-              <h2 className="text-2xl font-bold text-gray-900 mb-2">Image Details</h2>
-              <p className="text-gray-600">{selectedImage.public_id}</p>
-            </div>
           </div>
         </div>
       )}
