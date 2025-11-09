@@ -138,7 +138,7 @@ export default function ContactPage() {
       <Header />
 
       {/* Hero Section */}
-      <section className="relative min-h-[350px] flex items-center justify-center overflow-hidden">
+      <section className="relative h-[350px] md:h-[400px] overflow-hidden bg-black">
         <div className="absolute inset-0">
           <Image
             src="/images/banner.png"
@@ -148,12 +148,13 @@ export default function ContactPage() {
             priority
             sizes="100vw"
           />
-          <div className="absolute inset-0 bg-black opacity-50"></div>
+          <div className="absolute inset-0 bg-black opacity-40"></div>
         </div>
 
-        <div className="container mx-auto px-4 relative z-10 text-center text-white">
-          <h1 className="text-4xl md:text-6xl font-bold mb-4">Get In Touch</h1>
-          <p className="text-xl md:text-2xl text-gray-100 max-w-3xl mx-auto">
+        {/* Text positioned at bottom */}
+        <div className="absolute bottom-0 inset-x-0 h-1/3 bg-gradient-to-t from-black/70 to-transparent flex flex-col items-center justify-end text-center px-4 pb-8">
+          <h1 className="text-3xl md:text-4xl font-bold mb-2 text-white">Get In Touch</h1>
+          <p className="text-sm md:text-lg text-gray-100 max-w-3xl">
             We'd love to hear from you. Let's create your perfect Saudi adventure together!
           </p>
         </div>
