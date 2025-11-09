@@ -27,6 +27,24 @@ export const metadata: Metadata = {
   description: 'Discover authentic Saudi tourism experiences with Dare2Discover. Book desert safaris, cultural tours, and unique adventures across the Kingdom.',
   keywords: 'Saudi Arabia tours, desert safari, cultural experiences, tourism Saudi, D2D, Dare2Discover',
   authors: [{ name: 'Saudi Tourism Group' }],
+  icons: {
+    icon: [
+      {
+        url: '/images/favicon.ico',
+        sizes: 'any',
+      },
+      {
+        url: '/images/favicon-32x32.png',
+        sizes: '32x32',
+        type: 'image/png',
+      },
+      {
+        url: '/images/favicon-16x16.png',
+        sizes: '16x16',
+        type: 'image/png',
+      },
+    ],
+  },
 }
 
 export const viewport: Viewport = {
