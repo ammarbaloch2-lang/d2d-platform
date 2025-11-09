@@ -31,7 +31,7 @@ export default function Footer() {
         </svg>
       ),
       bgColor: '#E4405F',
-      url: 'https://www.instagram.com/invites/contact/?i=1ualzstv6zo2o&utm_content=2v620uk',
+      url: 'https://www.instagram.com/dare2discover_stg/',
     },
     {
       name: 'YouTube',
