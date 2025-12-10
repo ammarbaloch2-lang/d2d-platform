@@ -201,8 +201,8 @@ export default function FAQPage() {
             <a href="/contact" className="btn-primary">
               Contact Support
             </a>
-            <a href="tel:+966123456789" className="btn-secondary">
-              Call Us: +966 12 345 6789
+            <a href="tel:+966541331211" className="btn-secondary">
+              Call Us: +966 541 331 211
             </a>
           </div>
         </div>
