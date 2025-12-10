@@ -1,0 +1,146 @@
+[
+  {
+    "id": "1",
+    "title": "Majestic Tayma",
+    "description": "Experience the thrill of dune bashing and enjoy a traditional Bedouin dinner under the stars.",
+    "longDescription": "Join us for an authentic Arabian desert adventure that combines thrilling activities with traditional hospitality.",
+    "price": 350,
+    "duration": "6 hours",
+    "image": "/images/tayma2.jpg?w=800&q=80",
+    "images": [
+      "/images/tayma2.jpg?w=800&q=80",
+      "/images/tayma3.jpg?w=800&q=80",
+      "/images/tayma4.jpg?w=800&q=80",
+      "/images/tayma1.jpg?w=800&q=80"
+    ],
+    "rating": 4.8,
+    "reviewCount": 245,
+    "location": "Tayma Desert",
+    "category": "desert",
+    "maxCapacity": 15,
+    "includes": [
+      "Hotel pickup and drop-off",
+      "Dune bashing in 4x4 vehicle",
+      "Traditional BBQ dinner"
+    ],
+    "guide": {
+      "name": "Asfar",
+      "bio": "Expert desert guide with 10+ years of experience",
+      "languages": [
+        "Arabic",
+        "English"
+      ],
+      "rating": 4.9
+    },
+    "availableDates": [
+      "2025-10-20",
+      "2025-10-22",
+      "2025-10-25"
+    ],
+    "status": "active",
+    "createdAt": "2025-10-16T00:00:00.000Z",
+    "updatedAt": "2025-10-17T13:49:59.087Z"
+  },
+  {
+    "id": "2",
+    "title": "Historical Diriyah Tour",
+    "description": "Explore the UNESCO World Heritage site At-Turaif.",
+    "price": 200,
+    "duration": "4 hours",
+    "image": "https://images.unsplash.com/photo-1591608971362-f08b2a75731a?w=800&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1591608971362-f08b2a75731a?w=800&q=80",
+      "https://images.unsplash.com/photo-1549144511-f099e773c147?w=800&q=80",
+      "https://images.unsplash.com/photo-1564507592333-c60657eea523?w=800&q=80"
+    ],
+    "rating": 4.9,
+    "reviewCount": 189,
+    "location": "Diriyah",
+    "category": "cultural",
+    "status": "active",
+    "createdAt": "2025-10-16T00:00:00.000Z",
+    "updatedAt": "2025-10-16T00:00:00.000Z"
+  },
+  {
+    "id": "3",
+    "title": "Edge of the World",
+    "description": "Breathtaking views from dramatic cliffs of Jebel Fihrayn.",
+    "price": 300,
+    "duration": "8 hours",
+    "image": "https://images.unsplash.com/photo-1512632578888-169bbbc64f33?w=800&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1512632578888-169bbbc64f33?w=800&q=80",
+      "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80",
+      "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800&q=80",
+      "https://images.unsplash.com/photo-1506905668547-c73bd54150ec?w=800&q=80"
+    ],
+    "rating": 4.7,
+    "reviewCount": 312,
+    "location": "Northwest Riyadh",
+    "category": "nature",
+    "status": "active",
+    "createdAt": "2025-10-16T00:00:00.000Z",
+    "updatedAt": "2025-10-16T00:00:00.000Z"
+  },
+  {
+    "id": "4",
+    "title": "AlUla Heritage Experience",
+    "description": "Ancient Nabataean tombs and stunning rock formations.",
+    "price": 450,
+    "duration": "Full Day",
+    "image": "https://images.unsplash.com/photo-1583070135829-4c0ce3d9319d?w=800&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1583070135829-4c0ce3d9319d?w=800&q=80",
+      "https://images.unsplash.com/photo-1512632578888-169bbbc64f33?w=800&q=80",
+      "https://images.unsplash.com/photo-1548013146-72479768bada?w=800&q=80"
+    ],
+    "rating": 5,
+    "reviewCount": 421,
+    "location": "AlUla",
+    "category": "cultural",
+    "status": "active",
+    "createdAt": "2025-10-16T00:00:00.000Z",
+    "updatedAt": "2025-10-16T00:00:00.000Z"
+  },
+  {
+    "id": "5",
+    "title": "Jeddah Old Town Walk",
+    "description": "Discover the historic Al-Balad with traditional architecture.",
+    "price": 150,
+    "duration": "3 hours",
+    "image": "https://images.unsplash.com/photo-1591608971380-c607c40f2f35?w=800&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1591608971380-c607c40f2f35?w=800&q=80",
+      "https://images.unsplash.com/photo-1564507592333-c60657eea523?w=800&q=80",
+      "https://images.unsplash.com/photo-1549144511-f099e773c147?w=800&q=80"
+    ],
+    "rating": 4.6,
+    "reviewCount": 156,
+    "location": "Jeddah",
+    "category": "cultural",
+    "status": "active",
+    "createdAt": "2025-10-16T00:00:00.000Z",
+    "updatedAt": "2025-10-16T00:00:00.000Z"
+  },
+  {
+    "id": "6",
+    "title": "Red Sea Diving",
+    "description": "Explore vibrant coral reefs and marine life.",
+    "price": 400,
+    "duration": "5 hours",
+    "image": "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&q=80",
+      "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80",
+      "https://images.unsplash.com/photo-1583212292454-1fe6229603b7?w=800&q=80",
+      "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&q=80"
+    ],
+    "rating": 4.9,
+    "reviewCount": 203,
+    "location": "Red Sea",
+    "category": "nature",
+    "status": "active",
+    "createdAt": "2025-10-16T00:00:00.000Z",
+    "updatedAt": "2025-10-16T00:00:00.000Z"
+  }
+]
