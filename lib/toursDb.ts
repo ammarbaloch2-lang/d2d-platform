@@ -46,26 +46,31 @@ export async function getAllToursFromKv(): Promise<Tour[]> {
 
 // Helper function to save all tours (uses KV on Vercel, file system locally)
 async function saveTourToKv(tours: Tour[]): Promise<void> {
-  try {
-    console.log('[saveTourToKv] Saving', tours.length, 'tours')
-    console.log('[saveTourToKv] KV available:', !!kv)
+  console.log('[saveTourToKv] Saving', tours.length, 'tours')
+  console.log('[saveTourToKv] KV available:', !!kv)
 
-    // Save to KV if available (Vercel production)
-    if (kv) {
+  // Save to KV if available (Vercel production)
+  if (kv) {
+    try {
       console.log('[saveTourToKv] Writing to Vercel KV...')
       await kv.set(TOURS_KEY, tours)
       console.log('[saveTourToKv] Successfully wrote to Vercel KV')
-    } else {
-      console.log('[saveTourToKv] KV not available, skipping KV write')
+    } catch (error) {
+      console.error('[saveTourToKv] Error writing to KV:', error)
+      throw error
     }
+  } else {
+    console.log('[saveTourToKv] KV not available, skipping KV write')
+  }
 
-    // Always save to file system for backup/local development
+  // Save to file system only in local development (production file system is read-only)
+  try {
     console.log('[saveTourToKv] Writing to file system:', DATA_FILE)
     fs.writeFileSync(DATA_FILE, JSON.stringify(tours, null, 2))
     console.log('[saveTourToKv] Successfully wrote to file system')
   } catch (error) {
-    console.error('[saveTourToKv] Error writing tours:', error)
-    throw error
+    // File system is read-only in production, this is expected
+    console.log('[saveTourToKv] File system write failed (expected in production):', error)
   }
 }
 
