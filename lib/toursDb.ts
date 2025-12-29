@@ -47,15 +47,25 @@ export async function getAllToursFromKv(): Promise<Tour[]> {
 // Helper function to save all tours (uses KV on Vercel, file system locally)
 async function saveTourToKv(tours: Tour[]): Promise<void> {
   try {
+    console.log('[saveTourToKv] Saving', tours.length, 'tours')
+    console.log('[saveTourToKv] KV available:', !!kv)
+
     // Save to KV if available (Vercel production)
     if (kv) {
+      console.log('[saveTourToKv] Writing to Vercel KV...')
       await kv.set(TOURS_KEY, tours)
+      console.log('[saveTourToKv] Successfully wrote to Vercel KV')
+    } else {
+      console.log('[saveTourToKv] KV not available, skipping KV write')
     }
 
     // Always save to file system for backup/local development
+    console.log('[saveTourToKv] Writing to file system:', DATA_FILE)
     fs.writeFileSync(DATA_FILE, JSON.stringify(tours, null, 2))
+    console.log('[saveTourToKv] Successfully wrote to file system')
   } catch (error) {
-    console.error('Error writing tours:', error)
+    console.error('[saveTourToKv] Error writing tours:', error)
+    throw error
   }
 }
 
@@ -88,17 +98,36 @@ export async function updateTourInKv(
   id: string,
   tourData: Partial<Tour>
 ): Promise<Tour | null> {
-  const tours = await getAllToursFromKv()
-  const index = tours.findIndex(tour => tour.id === id)
-  if (index === -1) return null
+  console.log('[updateTourInKv] Starting update for tour:', id)
+  console.log('[updateTourInKv] KV available:', !!kv)
 
+  const tours = await getAllToursFromKv()
+  console.log('[updateTourInKv] Total tours found:', tours.length)
+
+  const index = tours.findIndex(tour => tour.id === id)
+  console.log('[updateTourInKv] Tour index:', index)
+
+  if (index === -1) {
+    console.error('[updateTourInKv] Tour not found with id:', id)
+    return null
+  }
+
+  const oldPrice = tours[index].price
   tours[index] = {
     ...tours[index],
     ...tourData,
     id, // Ensure id doesn't change
     updatedAt: new Date().toISOString(),
   }
+  const newPrice = tours[index].price
+
+  console.log('[updateTourInKv] Price change:', oldPrice, '->', newPrice)
+  console.log('[updateTourInKv] Saving to KV...')
+
   await saveTourToKv(tours)
+
+  console.log('[updateTourInKv] Save complete')
+
   return tours[index]
 }
 
