@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server'
+import { revalidatePath } from 'next/cache'
 import { getTourByIdFromKv, updateTourInKv, deleteTourFromKv } from '@/lib/toursDb'
 
 export async function GET(
@@ -24,6 +25,13 @@ export async function PUT(
     if (!updatedTour) {
       return NextResponse.json({ error: 'Tour not found' }, { status: 404 })
     }
+
+    // Revalidate all pages that display this tour
+    revalidatePath('/', 'layout') // Homepage
+    revalidatePath('/tours') // Tours listing page
+    revalidatePath(`/tours/${id}`) // Specific tour detail page
+    revalidatePath(`/api/tours/${id}`, 'page') // API route cache
+
     return NextResponse.json(updatedTour)
   } catch (error) {
     return NextResponse.json({ error: 'Failed to update tour' }, { status: 500 })
@@ -39,5 +47,11 @@ export async function DELETE(
   if (!success) {
     return NextResponse.json({ error: 'Tour not found' }, { status: 404 })
   }
+
+  // Revalidate all pages that display tours
+  revalidatePath('/', 'layout') // Homepage
+  revalidatePath('/tours') // Tours listing page
+  revalidatePath(`/tours/${id}`) // Specific tour detail page
+
   return NextResponse.json({ message: 'Tour deleted successfully' })
 }
