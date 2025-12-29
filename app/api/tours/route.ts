@@ -2,6 +2,10 @@ import { NextResponse } from 'next/server'
 import { revalidatePath } from 'next/cache'
 import { getAllToursFromKv, createTourInKv, initializeToursFromFile } from '@/lib/toursDb'
 
+// Disable caching for this route to ensure fresh data
+export const dynamic = 'force-dynamic'
+export const revalidate = 0
+
 export async function GET() {
   // Initialize tours from file on first call if KV is empty
   await initializeToursFromFile()
