@@ -18,6 +18,7 @@ function AdminDashboardContent() {
   const [successMessage, setSuccessMessage] = useState('')
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [selectedMember, setSelectedMember] = useState<Member | null>(null)
+  const [loggingOut, setLoggingOut] = useState(false)
 
   useEffect(() => {
     if (tabParam) {
@@ -140,6 +141,19 @@ function AdminDashboardContent() {
     setIsModalOpen(true)
   }
 
+  const handleLogout = async () => {
+    setLoggingOut(true)
+    try {
+      await fetch('/api/admin/auth/logout', {
+        method: 'POST',
+      })
+      window.location.href = '/admin/login'
+    } catch (error) {
+      console.error('Logout error:', error)
+      setLoggingOut(false)
+    }
+  }
+
   // Mock data
   const stats = {
     totalBookings: 1247,
@@ -164,9 +178,18 @@ function AdminDashboardContent() {
               <h1 className="text-2xl font-bold">D2D Admin Portal</h1>
               <p className="text-sm text-gray-300">Tour Management Dashboard</p>
             </div>
-            <Link href="/" className="btn-primary text-sm">
-              View Site
-            </Link>
+            <div className="flex items-center gap-4">
+              <Link href="/" className="btn-primary text-sm">
+                View Site
+              </Link>
+              <button
+                onClick={handleLogout}
+                disabled={loggingOut}
+                className="px-4 py-2 bg-red-600 hover:bg-red-700 text-white text-sm font-medium rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                {loggingOut ? 'Logging out...' : 'Logout'}
+              </button>
+            </div>
           </div>
         </div>
       </header>
