@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import { useRouter, useParams } from 'next/navigation'
 import Link from 'next/link'
 import { Tour } from '@/types/tour'
+import ImageUpload from '@/components/ImageUpload'
 
 export default function EditTourPage() {
   const router = useRouter()
@@ -361,44 +362,22 @@ export default function EditTourPage() {
                   </div>
 
                   <div className="md:col-span-2">
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Main Image Path *
-                    </label>
-                    <input
-                      type="text"
-                      name="image"
+                    <ImageUpload
+                      label="Main Image *"
                       value={formData.image}
-                      onChange={handleChange}
-                      required
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
-                      placeholder="/images/tour-name.jpg"
+                      onChange={(url) => setFormData(prev => ({ ...prev, image: url }))}
+                      helperText="Primary image for the tour - will be displayed as the main tour image"
                     />
-                    {formData.image && (
-                      <div className="mt-2">
-                        <img
-                          src={formData.image}
-                          alt="Preview"
-                          className="w-full h-48 object-cover rounded-lg"
-                        />
-                      </div>
-                    )}
                   </div>
 
                   <div className="md:col-span-2">
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Additional Image URLs (Gallery)
-                    </label>
-                    <textarea
-                      name="images"
+                    <ImageUpload
+                      label="Additional Images (Gallery)"
                       value={formData.images}
-                      onChange={handleChange}
-                      rows={4}
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
-                      placeholder="/images/tour-1.jpg&#10;/images/tour-2.jpg&#10;/images/tour-3.jpg"
+                      onChange={(urls) => setFormData(prev => ({ ...prev, images: urls }))}
+                      multiple
+                      helperText="Upload multiple images for the tour gallery - these will appear as a carousel on the tour card"
                     />
-                    <p className="text-xs text-gray-500 mt-1">
-                      One URL per line (use /images/ directory) - These will appear as a carousel on the tour card
-                    </p>
                   </div>
                 </div>
               </div>
