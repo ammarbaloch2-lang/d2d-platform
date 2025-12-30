@@ -3,6 +3,7 @@
 import { useState, useEffect, Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
 import Link from 'next/link'
+import Image from 'next/image'
 import { Tour } from '@/types/tour'
 import { Member } from '@/types/member'
 import MemberFormModal from '@/components/MemberFormModal'
@@ -11,7 +12,7 @@ function AdminDashboardContent() {
   const searchParams = useSearchParams()
   const tabParam = searchParams.get('tab')
 
-  const [activeTab, setActiveTab] = useState(tabParam || 'overview')
+  const [activeTab, setActiveTab] = useState(tabParam || 'tours')
   const [tours, setTours] = useState<Tour[]>([])
   const [members, setMembers] = useState<Member[]>([])
   const [loading, setLoading] = useState(false)
@@ -154,29 +155,24 @@ function AdminDashboardContent() {
     }
   }
 
-  // Mock data
-  const stats = {
-    totalBookings: 1247,
-    totalRevenue: 486500,
-    activeTours: 24,
-    totalUsers: 3892,
-  }
-
-  const recentBookings = [
-    { id: '1', tour: 'Desert Safari', customer: 'John Doe', date: '2025-10-25', amount: 350, status: 'Confirmed' },
-    { id: '2', tour: 'Diriyah Tour', customer: 'Sarah Smith', date: '2025-10-26', amount: 200, status: 'Pending' },
-    { id: '3', tour: 'Edge of World', customer: 'Mike Johnson', date: '2025-10-27', amount: 300, status: 'Confirmed' },
-  ]
-
   return (
     <div className="min-h-screen bg-gray-100">
       {/* Header */}
       <header className="bg-secondary text-white shadow-lg">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
-            <div>
-              <h1 className="text-2xl font-bold">D2D Admin Portal</h1>
-              <p className="text-sm text-gray-300">Tour Management Dashboard</p>
+            <div className="flex items-center gap-4">
+              <Image
+                src="/images/logo.png"
+                alt="D2D Logo"
+                width={50}
+                height={50}
+                className="rounded-lg"
+              />
+              <div>
+                <h1 className="text-2xl font-bold">D2D Admin Portal</h1>
+                <p className="text-sm text-gray-300">Tour Management Dashboard</p>
+              </div>
             </div>
             <div className="flex items-center gap-4">
               <Link href="/" className="btn-primary text-sm">
@@ -208,16 +204,6 @@ function AdminDashboardContent() {
         {/* Navigation Tabs */}
         <div className="bg-white rounded-lg shadow-md mb-8">
           <div className="flex flex-wrap border-b">
-            <button
-              onClick={() => setActiveTab('overview')}
-              className={`px-6 py-3 font-medium ${
-                activeTab === 'overview'
-                  ? 'border-b-2 border-primary text-primary'
-                  : 'text-gray-600 hover:text-primary'
-              }`}
-            >
-              Overview
-            </button>
             <button
               onClick={() => setActiveTab('tours')}
               className={`px-6 py-3 font-medium ${
@@ -260,113 +246,6 @@ function AdminDashboardContent() {
             </button>
           </div>
         </div>
-
-        {/* Overview Tab */}
-        {activeTab === 'overview' && (
-          <div>
-            {/* Stats Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-              <div className="bg-white rounded-lg shadow-md p-6">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <p className="text-gray-500 text-sm">Total Bookings</p>
-                    <p className="text-3xl font-bold text-gray-900">{stats.totalBookings}</p>
-                  </div>
-                  <div className="bg-primary bg-opacity-10 p-3 rounded-full">
-                    <svg className="w-8 h-8 text-primary" fill="currentColor" viewBox="0 0 20 20">
-                      <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"/>
-                      <path fillRule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clipRule="evenodd"/>
-                    </svg>
-                  </div>
-                </div>
-              </div>
-
-              <div className="bg-white rounded-lg shadow-md p-6">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <p className="text-gray-500 text-sm">Total Revenue</p>
-                    <p className="text-3xl font-bold text-gray-900">SAR {stats.totalRevenue.toLocaleString()}</p>
-                  </div>
-                  <div className="bg-green-100 p-3 rounded-full">
-                    <svg className="w-8 h-8 text-green-600" fill="currentColor" viewBox="0 0 20 20">
-                      <path d="M8.433 7.418c.155-.103.346-.196.567-.267v1.698a2.305 2.305 0 01-.567-.267C8.07 8.34 8 8.114 8 8c0-.114.07-.34.433-.582zM11 12.849v-1.698c.22.071.412.164.567.267.364.243.433.468.433.582 0 .114-.07.34-.433.582a2.305 2.305 0 01-.567.267z"/>
-                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-13a1 1 0 10-2 0v.092a4.535 4.535 0 00-1.676.662C6.602 6.234 6 7.009 6 8c0 .99.602 1.765 1.324 2.246.48.32 1.054.545 1.676.662v1.941c-.391-.127-.68-.317-.843-.504a1 1 0 10-1.51 1.31c.562.649 1.413 1.076 2.353 1.253V15a1 1 0 102 0v-.092a4.535 4.535 0 001.676-.662C13.398 13.766 14 12.991 14 12c0-.99-.602-1.765-1.324-2.246A4.535 4.535 0 0011 9.092V7.151c.391.127.68.317.843.504a1 1 0 101.511-1.31c-.563-.649-1.413-1.076-2.354-1.253V5z" clipRule="evenodd"/>
-                    </svg>
-                  </div>
-                </div>
-              </div>
-
-              <div className="bg-white rounded-lg shadow-md p-6">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <p className="text-gray-500 text-sm">Active Tours</p>
-                    <p className="text-3xl font-bold text-gray-900">{stats.activeTours}</p>
-                  </div>
-                  <div className="bg-secondary bg-opacity-10 p-3 rounded-full">
-                    <svg className="w-8 h-8 text-secondary" fill="currentColor" viewBox="0 0 20 20">
-                      <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z"/>
-                    </svg>
-                  </div>
-                </div>
-              </div>
-
-              <div className="bg-white rounded-lg shadow-md p-6">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <p className="text-gray-500 text-sm">Total Users</p>
-                    <p className="text-3xl font-bold text-gray-900">{stats.totalUsers}</p>
-                  </div>
-                  <div className="bg-blue-100 p-3 rounded-full">
-                    <svg className="w-8 h-8 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
-                      <path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z"/>
-                    </svg>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Recent Bookings */}
-            <div className="bg-white rounded-lg shadow-md overflow-hidden">
-              <div className="p-6 border-b">
-                <h2 className="text-xl font-bold">Recent Bookings</h2>
-              </div>
-              <div className="overflow-x-auto">
-                <table className="w-full">
-                  <thead className="bg-gray-50">
-                    <tr>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">ID</th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Tour</th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Customer</th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Date</th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Amount</th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Status</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-gray-200">
-                    {recentBookings.map((booking) => (
-                      <tr key={booking.id} className="hover:bg-gray-50">
-                        <td className="px-6 py-4 text-sm text-gray-900">{booking.id}</td>
-                        <td className="px-6 py-4 text-sm text-gray-900">{booking.tour}</td>
-                        <td className="px-6 py-4 text-sm text-gray-900">{booking.customer}</td>
-                        <td className="px-6 py-4 text-sm text-gray-900">{booking.date}</td>
-                        <td className="px-6 py-4 text-sm text-gray-900">SAR {booking.amount}</td>
-                        <td className="px-6 py-4">
-                          <span className={`px-2 py-1 text-xs rounded-full ${
-                            booking.status === 'Confirmed'
-                              ? 'bg-green-100 text-green-800'
-                              : 'bg-yellow-100 text-yellow-800'
-                          }`}>
-                            {booking.status}
-                          </span>
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        )}
 
         {/* Tours Tab */}
         {activeTab === 'tours' && (

@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
+import Image from 'next/image'
 
 export default function AdminLoginPage() {
   const router = useRouter()
@@ -54,6 +55,15 @@ export default function AdminLoginPage() {
       <div className="max-w-md w-full">
         <div className="bg-white rounded-lg shadow-xl p-8">
           <div className="text-center mb-8">
+            <div className="flex justify-center mb-4">
+              <Image
+                src="/images/logo.png"
+                alt="D2D Logo"
+                width={80}
+                height={80}
+                className="rounded-lg"
+              />
+            </div>
             <h1 className="text-3xl font-bold text-secondary mb-2">D2D Admin</h1>
             <p className="text-gray-600">Sign in to access the admin panel</p>
           </div>
