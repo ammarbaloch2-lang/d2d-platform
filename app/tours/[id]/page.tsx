@@ -162,7 +162,27 @@ export default function TourDetailPage() {
     )
   }
 
-  const galleryImages = tour.images && tour.images.length > 0 ? tour.images : [tour.image]
+  // Combine main image with additional images, removing duplicates
+  const galleryImages = (() => {
+    const allImages: string[] = []
+
+    // Always include the main image first
+    if (tour.image) {
+      allImages.push(tour.image)
+    }
+
+    // Add additional images if they exist
+    if (tour.images && tour.images.length > 0) {
+      tour.images.forEach(img => {
+        // Only add if not already in the array (avoid duplicates)
+        if (!allImages.includes(img)) {
+          allImages.push(img)
+        }
+      })
+    }
+
+    return allImages.length > 0 ? allImages : [tour.image || '/images/placeholder.jpg']
+  })()
 
   const openLightbox = (index: number) => {
     setLightboxIndex(index)
