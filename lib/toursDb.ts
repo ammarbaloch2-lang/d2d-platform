@@ -1,40 +1,74 @@
 import { Tour } from '@/types/tour'
 import * as fs from 'fs'
 import * as path from 'path'
+import { createClient } from 'redis'
 
 const TOURS_KEY = 'tours'
 const DATA_FILE = path.join(process.cwd(), 'data', 'tours.json')
 
-// Check if KV environment variables are available
-const hasKVEnv = () => {
-  return !!(process.env.KV_REST_API_URL && process.env.KV_REST_API_TOKEN)
+// Check if Redis environment variable is available
+const hasRedisEnv = () => {
+  return !!process.env.REDIS_URL
 }
 
-// Import KV only if environment variables are available
-let kv: any = null
-if (hasKVEnv()) {
-  try {
-    const kvModule = require('@vercel/kv')
-    if (kvModule && kvModule.kv) {
-      kv = kvModule.kv
-    }
-  } catch (error) {
-    console.log('KV module not available, using file system storage')
+// Initialize Redis client
+let redisClient: any = null
+let redisPromise: Promise<any> | null = null
+
+async function getRedisClient() {
+  if (!hasRedisEnv()) {
+    return null
   }
+
+  if (redisClient) {
+    return redisClient
+  }
+
+  if (redisPromise) {
+    return redisPromise
+  }
+
+  redisPromise = (async () => {
+    try {
+      const client = createClient({
+        url: process.env.REDIS_URL
+      })
+
+      client.on('error', (err) => {
+        console.error('Redis Client Error:', err)
+      })
+
+      await client.connect()
+      console.log('Redis client connected successfully')
+      redisClient = client
+      return client
+    } catch (error) {
+      console.error('Failed to connect to Redis:', error)
+      redisPromise = null
+      return null
+    }
+  })()
+
+  return redisPromise
 }
 
-// Helper function to get all tours (uses KV on Vercel, file system locally)
+// Helper function to get all tours (uses Redis on Vercel, file system locally)
 export async function getAllToursFromKv(): Promise<Tour[]> {
   try {
-    // Try KV first (Vercel production)
-    if (kv) {
-      const tours = await (kv.get as (key: string) => Promise<Tour[] | null>)(TOURS_KEY)
-      if (tours) return tours
+    // Try Redis first (Vercel production)
+    const client = await getRedisClient()
+    if (client) {
+      const data = await client.get(TOURS_KEY)
+      if (data) {
+        console.log('[getAllToursFromKv] Retrieved tours from Redis')
+        return JSON.parse(data)
+      }
     }
 
     // Fallback to file system (local development)
     if (fs.existsSync(DATA_FILE)) {
       const data = fs.readFileSync(DATA_FILE, 'utf-8')
+      console.log('[getAllToursFromKv] Retrieved tours from file system')
       return JSON.parse(data)
     }
     return []
@@ -44,23 +78,23 @@ export async function getAllToursFromKv(): Promise<Tour[]> {
   }
 }
 
-// Helper function to save all tours (uses KV on Vercel, file system locally)
+// Helper function to save all tours (uses Redis on Vercel, file system locally)
 async function saveTourToKv(tours: Tour[]): Promise<void> {
   console.log('[saveTourToKv] Saving', tours.length, 'tours')
-  console.log('[saveTourToKv] KV available:', !!kv)
 
-  // Save to KV if available (Vercel production)
-  if (kv) {
+  // Save to Redis if available (Vercel production)
+  const client = await getRedisClient()
+  if (client) {
     try {
-      console.log('[saveTourToKv] Writing to Vercel KV...')
-      await kv.set(TOURS_KEY, tours)
-      console.log('[saveTourToKv] Successfully wrote to Vercel KV')
+      console.log('[saveTourToKv] Writing to Redis...')
+      await client.set(TOURS_KEY, JSON.stringify(tours))
+      console.log('[saveTourToKv] Successfully wrote to Redis')
     } catch (error) {
-      console.error('[saveTourToKv] Error writing to KV:', error)
+      console.error('[saveTourToKv] Error writing to Redis:', error)
       throw error
     }
   } else {
-    console.log('[saveTourToKv] KV not available, skipping KV write')
+    console.log('[saveTourToKv] Redis not available, skipping Redis write')
   }
 
   // Save to file system only in local development (production file system is read-only)
@@ -104,7 +138,9 @@ export async function updateTourInKv(
   tourData: Partial<Tour>
 ): Promise<Tour | null> {
   console.log('[updateTourInKv] Starting update for tour:', id)
-  console.log('[updateTourInKv] KV available:', !!kv)
+
+  const client = await getRedisClient()
+  console.log('[updateTourInKv] Redis available:', !!client)
 
   const tours = await getAllToursFromKv()
   console.log('[updateTourInKv] Total tours found:', tours.length)
@@ -127,7 +163,7 @@ export async function updateTourInKv(
   const newPrice = tours[index].price
 
   console.log('[updateTourInKv] Price change:', oldPrice, '->', newPrice)
-  console.log('[updateTourInKv] Saving to KV...')
+  console.log('[updateTourInKv] Saving to Redis...')
 
   await saveTourToKv(tours)
 
@@ -146,17 +182,19 @@ export async function deleteTourFromKv(id: string): Promise<boolean> {
   return true
 }
 
-// Initialize tours from file if KV is empty (one-time setup)
+// Initialize tours from file if Redis is empty (one-time setup)
 export async function initializeToursFromFile(): Promise<void> {
   try {
     const existingTours = await getAllToursFromKv()
-    // Only initialize if we have tours from file (don't init from KV if it's empty)
-    if (kv && existingTours.length === 0) {
+    const client = await getRedisClient()
+
+    // Only initialize if we have Redis and no existing tours
+    if (client && existingTours.length === 0) {
       if (fs.existsSync(DATA_FILE)) {
         const data = fs.readFileSync(DATA_FILE, 'utf-8')
         const tours: Tour[] = JSON.parse(data)
         await saveTourToKv(tours)
-        console.log('Initialized KV with tours from file')
+        console.log('Initialized Redis with tours from file')
       }
     }
   } catch (error) {
